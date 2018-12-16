@@ -28,24 +28,24 @@ const styles = theme => ({
   },
 });
 
-const Videos = ({ classes }) => (
+const Videos = ({ classes, videoUrl = DEFAULT_VIDEO_URL }) => (
   <div className={classes.root}>
     <Grid className={classes.container} container spacing={24}>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} md={6}>
         <Paper className={classes.paper}>
           <Grid container>
-            <VideoPlayer videoUrl={DEFAULT_VIDEO_URL} />
+            <VideoPlayer videoUrl={videoUrl} />
           </Grid>
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} md={6}>
         <Paper className={classes.paper}>
           <Grid container spacing={24} alignItems="center">
             <Grid item xs={12} md={6}>
               <SearchBar />
             </Grid>
             <Grid item xs={12} md={6}>
-              <FullVideoButton videoUrl={DEFAULT_VIDEO_URL} />
+              <FullVideoButton videoUrl={videoUrl} />
             </Grid>
           </Grid>
         </Paper>
