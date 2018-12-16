@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 
 import SearchBar from 'videos/components/SearchBar';
 import FullVideoButton from 'videos/components/FullVideoButton';
+import VideoPlayer from 'videos/components/VideoPlayer';
 
 import { DEFAULT_VIDEO_URL } from 'videos/constants';
 
@@ -32,7 +33,9 @@ const Videos = ({ classes }) => (
     <Grid className={classes.container} container spacing={24}>
       <Grid item xs={12} sm={6}>
         <Paper className={classes.paper}>
-          Video container
+          <Grid container>
+            <VideoPlayer videoUrl={DEFAULT_VIDEO_URL} />
+          </Grid>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
