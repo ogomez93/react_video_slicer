@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
   videoPlayer: {
-    height: '100%',
     width: '100%'
   }
 })

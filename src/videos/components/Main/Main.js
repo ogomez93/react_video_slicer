@@ -3,11 +3,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import SearchBar from 'videos/components/SearchBar';
 import FullVideoButton from 'videos/components/FullVideoButton';
+import NewClip from 'videos/components/NewClip';
+import SearchBar from 'videos/components/SearchBar';
+import VideoInfo from 'videos/components/VideoInfo';
 import VideoPlayer from 'videos/components/VideoPlayer';
-
-import { DEFAULT_VIDEO_URL } from 'videos/constants';
 
 const styles = theme => ({
   root: {
@@ -23,20 +23,25 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
     textAlign: 'center',
-    color: theme.palette.text.primary,
-    height: '100%'
-  },
+    color: theme.palette.text.primary
+  }
 });
 
-const Videos = ({ classes, videoUrl = DEFAULT_VIDEO_URL }) => (
+const Videos = ({ classes, video }) => (
   <div className={classes.root}>
     <Grid className={classes.container} container spacing={24}>
       <Grid item xs={12} md={6}>
-        <Paper className={classes.paper}>
-          <Grid container>
-            <VideoPlayer videoUrl={videoUrl} />
+        <Grid container>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <VideoPlayer videoUrl={video.videoUrl} />
+              <VideoInfo video={video} />
+            </Paper>
           </Grid>
-        </Paper>
+          <Grid item xs={12}>
+            <NewClip />
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item xs={12} md={6}>
         <Paper className={classes.paper}>
@@ -45,7 +50,7 @@ const Videos = ({ classes, videoUrl = DEFAULT_VIDEO_URL }) => (
               <SearchBar />
             </Grid>
             <Grid item xs={12} md={6}>
-              <FullVideoButton videoUrl={videoUrl} />
+              <FullVideoButton videoUrl={video.videoUrl} />
             </Grid>
           </Grid>
         </Paper>

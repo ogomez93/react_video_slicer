@@ -1,5 +1,6 @@
-export const getSelectedVideo = ({
-  videos: {
-    videos = [{}]
-  } = {}
-}, { videoIndex = 0 }) => videos[videoIndex];
+export const getSelectedVideo = (
+  { videos = [{}] },
+  { videoIndex = 0 }
+) => videos[videoIndex];
+
+export const getAllVideos = ({ videos = [{}] }) => videos;

@@ -14,8 +14,8 @@ const styles = () => ({
   },
 });
 
-const SearchBar = ({ classes, name, onNameChange }) => (
-  <form className={classes.container} autoComplete="off">
+const SearchBar = ({ classes, name, onNameChange, onSubmit }) => (
+  <form className={classes.container} autoComplete="off" onSubmit={onSubmit}>
     <TextField
       id="searchBar"
       label="Search clips by name"
