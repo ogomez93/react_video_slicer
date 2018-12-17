@@ -8,7 +8,10 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import ClipItem from 'videos/components/ClipItem';
 
-const ClipList = ({ video: { clips = [], videoUrl, duration } }) => (
+const ClipList = ({
+  video: { clips = [], videoUrl, duration },
+  videoIndex
+}) => (
   <List>
     <ListItem>
       <ListItemText
@@ -25,7 +28,13 @@ const ClipList = ({ video: { clips = [], videoUrl, duration } }) => (
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
-    {clips.map((clip, index) => <ClipItem {...clip} key={`clip-${index}`} />)}
+    {clips.map((clip, index) =>
+      <ClipItem
+        {...clip}
+        clipIndex={index}
+        videoIndex={videoIndex}
+        key={`clip-${index}`}
+      />)}
   </List>
 );
 

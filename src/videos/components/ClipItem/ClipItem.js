@@ -8,7 +8,16 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const ClipItem = ({ name, start, end, anchorEl, openMenu, closeMenu }) => (
+const ClipItem = ({
+  name,
+  start,
+  end,
+  anchorEl,
+  openMenu,
+  closeMenu,
+  // editItem,
+  deleteItem
+}) => (
   <Fragment>
     <Divider component="li" />
     <ListItem>
@@ -33,7 +42,7 @@ const ClipItem = ({ name, start, end, anchorEl, openMenu, closeMenu }) => (
         onClose={closeMenu}
       >
         <MenuItem onClick={closeMenu}>Edit</MenuItem>
-        <MenuItem onClick={closeMenu}>Delete</MenuItem>
+        <MenuItem onClick={deleteItem}>Delete</MenuItem>
       </Menu>
     </ListItem>
   </Fragment>

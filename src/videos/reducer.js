@@ -7,12 +7,14 @@ import {
 
 import initialState from './constants/initialState';
 
+const setVideo = (videos, index) => videos[index];
+
 let clips, video;
 
 const videos = (videos = initialState, { payload, type }) => {
   switch (type) {
     case ADD_CLIP:
-      video = videos[payload.videoIndex];
+      video = setVideo(videos, payload.videoIndex);
       ({ clips } = video);
       return Object.assign([], videos, {
         [payload.videoIndex]: {
@@ -25,7 +27,7 @@ const videos = (videos = initialState, { payload, type }) => {
       });
 
     case EDIT_CLIP:
-      video = videos[payload.videoIndex];
+      video = setVideo(videos, payload.videoIndex);
       ({ clips } = video);
       return Object.assign([], videos, {
         [payload.videoIndex]: {
@@ -37,7 +39,7 @@ const videos = (videos = initialState, { payload, type }) => {
       });
 
     case REMOVE_CLIP:
-      video = videos[payload.videoIndex];
+      video = setVideo(videos, payload.videoIndex);
       ({ clips } = video);
       return Object.assign([], videos, {
         [payload.videoIndex]: {
@@ -50,7 +52,7 @@ const videos = (videos = initialState, { payload, type }) => {
       });
 
     case SET_DURATION:
-      video = videos[payload.videoIndex];
+      video = setVideo(videos, payload.videoIndex);
       return Object.assign([], videos, {
         [payload.videoIndex]: {
           ...video,
