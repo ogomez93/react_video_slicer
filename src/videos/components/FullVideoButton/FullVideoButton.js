@@ -1,21 +1,16 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  }
-});
-
-const FullVideoButton = ({ classes, playing = false, videoUrl }) => (
+const FullVideoButton = ({
+  video: { playing = false, loading }
+}) => (
   <Button
-    variant="contained"
     color="primary"
-    className={classes.button}
+    disabled={loading}
+    variant="contained"
   >
     {playing ? 'Pause' : 'Play full video'}
   </Button>
 );
 
-export default withStyles(styles)(FullVideoButton)
+export default FullVideoButton;

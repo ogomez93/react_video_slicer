@@ -71,7 +71,7 @@ const Videos = ({ classes, video, videoIndex }) => (
                 <SearchBar />
               </Grid>
               <Grid item xs={12} md={6}>
-                <FullVideoButton videoUrl={video.videoUrl} />
+                <FullVideoButton video={video} />
               </Grid>
             </Grid>
             <Divider className={classes.sectionDivider} />

@@ -6,12 +6,17 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
   rightIcon: {
     marginLeft: theme.spacing.unit,
+  },
+  hidden: {
+    opacity: 0
   }
 });
 
-const NewClip = ({ classes, setAdding }) => (
+const NewClip = ({ classes, video: { loading }, setAdding }) => (
   <Button
+    className={loading ? classes.hidden : ''}
     color="primary"
+    disabled={loading}
     onClick={setAdding}
     variant="contained"
   >
