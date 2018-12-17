@@ -3,7 +3,7 @@ import { compose, withHandlers } from 'recompose';
 
 import ClipItem from './ClipItem';
 
-import { editClip, removeClip } from 'videos/actions';
+import { removeClip } from 'videos/actions';
 
 import withMenuState from './utils/withMenuState';
 import { closeMenu, openMenu } from './utils/menuHandler';
@@ -25,9 +25,6 @@ const mapDispatchToProps = (dispatch, props) => ({
     closeDeleting();
     closeMenu();
   }
-  // editItem: () => {
-
-  // }
 });
 
 export default compose(

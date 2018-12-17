@@ -31,6 +31,7 @@ const ClipList = ({
     {clips.map((clip, index) =>
       <ClipItem
         {...clip}
+        video={{ duration }}
         clipIndex={index}
         videoIndex={videoIndex}
         key={`clip-${index}`}

@@ -31,10 +31,10 @@ export const onSubmit = (dispatch, {
     const errors = clipErrors(clip, parseFloat(duration));
     if (errors.length === 0) {
       dispatch(
-        clipIndex
-          ? editClip(clip, clipIndex, videoIndex)
-          : addClip(clip, videoIndex));
-      onCancel();
+        isNaN(clipIndex)
+          ? addClip(clip, videoIndex)
+          : editClip(clip, clipIndex, videoIndex));
+      onCancel && onCancel();
     } else {
       console.log(errors);
     }

@@ -11,17 +11,20 @@ import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import DeleteItemDialog from 'videos/components/DeleteItemDialog';
+import EditItemDialog from 'videos/components/EditItemDialog';
 
 const ClipItem = ({
   name,
   start,
   end,
+  video,
+  clipIndex,
+  videoIndex,
   deleting,
   editing,
   anchorEl,
   openMenu,
   closeMenu,
-  // editItem,
   deleteItem,
   openEditing,
   closeEditing,
@@ -72,6 +75,23 @@ const ClipItem = ({
           start={start}
           onClose={closeDeleting}
           deleteItem={deleteItem}
+        />
+      </Dialog>
+      <Dialog
+        open={editing}
+        onClose={closeEditing}
+        aria-labelledby="editClipDialog"
+      >
+        <EditItemDialog
+          dialogTitle="editClipDialog"
+          end={end}
+          name={name}
+          start={start}
+          video={video}
+          clipIndex={clipIndex}
+          videoIndex={videoIndex}
+          closeEditing={closeEditing}
+          closeMenu={closeMenu}
         />
       </Dialog>
     </ListItem>
