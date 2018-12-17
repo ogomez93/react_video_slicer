@@ -58,7 +58,14 @@ const styles = theme => ({
   }
 });
 
-const Videos = ({ classes, clipIndex, setClip, video, videoIndex }) => (
+const Videos = ({
+  classes,
+  clipIndex,
+  setClip,
+  setFullVideo,
+  video,
+  videoIndex
+}) => (
   <div className={classes.root}>
     <Grid className={classes.container} container spacing={24}>
       <Grid item xs={12} md={6} className={classes.columnContainer}>
@@ -101,6 +108,7 @@ const Videos = ({ classes, clipIndex, setClip, video, videoIndex }) => (
               <ClipList
                 clipIndex={clipIndex}
                 setClip={setClip}
+                setFullVideo={setFullVideo}
                 video={video}
                 videoIndex={videoIndex}
               />

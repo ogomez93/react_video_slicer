@@ -19,6 +19,7 @@ const ClipList = ({
   classes,
   clipIndex,
   setClip,
+  setFullVideo,
   video: { clips = [], videoUrl, duration },
   videoIndex
 }) => (
@@ -47,6 +48,7 @@ const ClipList = ({
         clipIndex={index}
         selected={clipIndex === index}
         setClip={setClip}
+        setFullVideo={setFullVideo}
         video={{ duration, videoUrl }}
         videoIndex={videoIndex}
       />)}

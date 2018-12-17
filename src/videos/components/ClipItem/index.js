@@ -20,10 +20,17 @@ import {
 
 const mapDispatchToProps = (dispatch, props) => ({
   deleteItem: () => {
-    const { closeMenu, closeDeleting, clipIndex, videoIndex } = props;
+    const {
+      closeMenu,
+      closeDeleting,
+      clipIndex,
+      setFullVideo,
+      videoIndex
+    } = props;
     dispatch(removeClip(clipIndex, videoIndex));
-    closeDeleting();
-    closeMenu();
+    closeDeleting && closeDeleting();
+    closeMenu && closeMenu();
+    setFullVideo && setFullVideo();
   }
 });
 
