@@ -26,6 +26,17 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.primary
   },
+  listPaper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.primary,
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  clipsList: {
+    flex: 1
+  },
   sectionDivider: {
     marginBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2
@@ -65,7 +76,7 @@ const Videos = ({ classes, video, videoIndex }) => (
       </Grid>
       <Grid item xs={12} md={6}>
         <Grid container className={classes.columnContainer}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.listPaper}>
             <Grid container spacing={24} alignItems="center">
               <Grid item xs={12} md={6}>
                 <SearchBar />
@@ -76,11 +87,12 @@ const Videos = ({ classes, video, videoIndex }) => (
             </Grid>
             <Divider className={classes.sectionDivider} />
             <Grid
+              alignItems="stretch"
+              className={classes.clipsList}
               container
-              spacing={24}
               direction="column"
               justify="flex-start"
-              alignItems="stretch"
+              spacing={24}
             >
               <ClipList video={video} videoIndex={videoIndex} />
             </Grid>
