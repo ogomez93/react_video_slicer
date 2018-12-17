@@ -102,7 +102,6 @@ const ClipForm = ({
         >
           <Button
             className={classes.button}
-            color="secondary"
             onClick={onCancel}
           >
             Cancel
