@@ -20,6 +20,8 @@ const ClipItem = ({
   video,
   clipIndex,
   videoIndex,
+  selected,
+  setClip,
   deleting,
   editing,
   anchorEl,
@@ -33,10 +35,12 @@ const ClipItem = ({
 }) => (
   <Fragment>
     <Divider component="li" />
-    <ListItem>
+    <ListItem button component="a" selected={selected}>
       <ListItemText
         primary={name}
         secondary={`${start} - ${end}`}
+        onClick={setClip}
+        clipindex={clipIndex}
       />
       <ListItemSecondaryAction>
         <IconButton

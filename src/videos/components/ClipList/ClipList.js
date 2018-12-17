@@ -17,11 +17,13 @@ const styles = () => ({
 
 const ClipList = ({
   classes,
+  clipIndex,
+  setClip,
   video: { clips = [], videoUrl, duration },
   videoIndex
 }) => (
   <List className={classes.list}>
-    <ListItem>
+    <ListItem selected={clipIndex === -1} button component="a">
       <ListItemText
         primary={`Full video (${duration} seconds)`}
         secondary={videoUrl}
@@ -29,6 +31,8 @@ const ClipList = ({
           noWrap: true,
           title: videoUrl
         }}
+        clipindex={-1}
+        onClick={setClip}
       />
       <ListItemSecondaryAction>
         <IconButton aria-label="Delete">
@@ -39,10 +43,12 @@ const ClipList = ({
     {clips.map((clip, index) =>
       <ClipItem
         {...clip}
-        video={{ duration }}
-        clipIndex={index}
-        videoIndex={videoIndex}
         key={`clip-${index}`}
+        clipIndex={index}
+        selected={clipIndex === index}
+        setClip={setClip}
+        video={{ duration, videoUrl }}
+        videoIndex={videoIndex}
       />)}
   </List>
 );

@@ -58,15 +58,19 @@ const styles = theme => ({
   }
 });
 
-const Videos = ({ classes, video, videoIndex }) => (
+const Videos = ({ classes, clipIndex, setClip, video, videoIndex }) => (
   <div className={classes.root}>
     <Grid className={classes.container} container spacing={24}>
       <Grid item xs={12} md={6} className={classes.columnContainer}>
         <Grid container className={classes.columnContainer}>
           <Grid item>
             <Paper className={classes.paper}>
-              <VideoPlayer video={video} videoIndex={videoIndex} />
-              <VideoInfo video={video} />
+              <VideoPlayer
+                video={video}
+                videoIndex={videoIndex}
+                clipIndex={clipIndex}
+              />
+              <VideoInfo video={video} clipIndex={clipIndex} />
             </Paper>
           </Grid>
           <Grid item xs className={classes.newClipContainer}>
@@ -94,7 +98,12 @@ const Videos = ({ classes, video, videoIndex }) => (
               justify="flex-start"
               spacing={24}
             >
-              <ClipList video={video} videoIndex={videoIndex} />
+              <ClipList
+                clipIndex={clipIndex}
+                setClip={setClip}
+                video={video}
+                videoIndex={videoIndex}
+              />
             </Grid>
           </Paper>
         </Grid>

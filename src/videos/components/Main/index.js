@@ -1,9 +1,10 @@
-import { compose } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
 import Main from './Main';
 
 import { withSelectedClip, withSelectedVideo } from './utils/withMainState';
+import { setClip } from './utils/withMainHandlers';
 
 import { getSelectedVideo } from 'videos/selectors/selectors';
 
@@ -14,5 +15,6 @@ const mapStateToProps = (state, props) => ({
 export default compose(
   withSelectedVideo,
   withSelectedClip,
+  withHandlers({ setClip }),
   connect(mapStateToProps)
 )(Main);
