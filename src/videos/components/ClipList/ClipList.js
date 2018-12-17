@@ -14,6 +14,10 @@ const ClipList = ({ video: { clips = [], videoUrl, duration } }) => (
       <ListItemText
         primary={`Full video (${duration} seconds)`}
         secondary={videoUrl}
+        secondaryTypographyProps={{
+          noWrap: true,
+          title: videoUrl
+        }}
       />
       <ListItemSecondaryAction>
         <IconButton aria-label="Delete">
