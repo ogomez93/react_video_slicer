@@ -100,10 +100,19 @@ const ClipForm = ({
           justify="flex-end"
           alignItems="flex-end"
         >
-          <Button className={classes.button} color="secondary" onClick={onCancel}>
+          <Button
+            className={classes.button}
+            color="secondary"
+            onClick={onCancel}
+          >
             Cancel
           </Button>
-          <Button className={classes.button} color="primary" onClick={onSubmit}>
+          <Button
+            className={classes.button}
+            color="primary"
+            type="submit"
+            onClick={onSubmit}
+          >
             Save
           </Button>
         </Grid>
