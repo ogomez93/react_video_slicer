@@ -9,14 +9,14 @@ const styles = () => ({
 
 const VideoPlayer = ({ classes, url, onLoadedMetadata }) => (
   <video
+    autoPlay
     className={classes.videoPlayer}
     controls
     name="media"
     onLoadedMetadata={onLoadedMetadata}
     preload="metadata"
-  >
-    <source src={url} />
-  </video>
+    src={url}
+  />
 );
 
 export default withStyles(styles)(VideoPlayer);
