@@ -5,17 +5,17 @@ const styles = () => ({
   videoPlayer: {
     width: '100%'
   }
-})
+});
 
-const VideoPlayer = ({ classes, video, onLoadedMetadata }) => (
+const VideoPlayer = ({ classes, url, onLoadedMetadata }) => (
   <video
     className={classes.videoPlayer}
     controls
     name="media"
-    preload="metadata"
     onLoadedMetadata={onLoadedMetadata}
+    preload="metadata"
   >
-    <source src={video.videoUrl} />
+    <source src={url} />
   </video>
 );
 
