@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 
 import Main from './Main';
 
-import withSelectedVideo from './utils/withSelectedVideo';
+import { withSelectedClip, withSelectedVideo } from './utils/withMainState';
 
 import { getSelectedVideo } from 'videos/selectors/selectors';
 
-const mapStateToProps = (state, { videoIndex }) => ({
-  video: getSelectedVideo(state, videoIndex)
+const mapStateToProps = (state, props) => ({
+  video: getSelectedVideo(state, props)
 });
 
 export default compose(
   withSelectedVideo,
+  withSelectedClip,
   connect(mapStateToProps)
 )(Main);

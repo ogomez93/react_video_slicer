@@ -2,7 +2,9 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 
+import ClipList from 'videos/components/ClipList';
 import FullVideoButton from 'videos/components/FullVideoButton';
 import NewClip from 'videos/components/NewClip';
 import SearchBar from 'videos/components/SearchBar';
@@ -24,6 +26,10 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.primary
   },
+  sectionDivider: {
+    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 2
+  },
   columnContainer: {
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
@@ -41,33 +47,45 @@ const styles = theme => ({
   }
 });
 
-const Videos = ({ classes, video }) => (
+const Videos = ({ classes, video, videoIndex }) => (
   <div className={classes.root}>
     <Grid className={classes.container} container spacing={24}>
       <Grid item xs={12} md={6} className={classes.columnContainer}>
         <Grid container className={classes.columnContainer}>
           <Grid item>
             <Paper className={classes.paper}>
-              <VideoPlayer videoUrl={video.videoUrl} />
+              <VideoPlayer video={video} videoIndex={videoIndex} />
               <VideoInfo video={video} />
             </Paper>
           </Grid>
           <Grid item xs className={classes.newClipContainer}>
-            <NewClip />
+            <NewClip video={video} videoIndex={videoIndex} />
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} md={6}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={24} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <SearchBar />
+        <Grid container className={classes.columnContainer}>
+          <Paper className={classes.paper}>
+            <Grid container spacing={24} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <SearchBar />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <FullVideoButton videoUrl={video.videoUrl} />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <FullVideoButton videoUrl={video.videoUrl} />
+            <Divider className={classes.sectionDivider} />
+            <Grid
+              container
+              spacing={24}
+              direction="column"
+              justify="flex-start"
+              alignItems="stretch"
+            >
+              <ClipList video={video} videoIndex={videoIndex} />
             </Grid>
-          </Grid>
-        </Paper>
+          </Paper>
+        </Grid>
       </Grid>
     </Grid>
   </div>

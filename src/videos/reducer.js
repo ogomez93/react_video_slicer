@@ -1,60 +1,66 @@
-import { ADD_CLIP, EDIT_CLIP, REMOVE_CLIP } from './actionTypes';
+import {
+  ADD_CLIP,
+  EDIT_CLIP,
+  REMOVE_CLIP,
+  SET_DURATION
+} from './actionTypes';
 
 import initialState from './constants/initialState';
 
 let clips, video;
 
-const videos = (state = initialState, { payload, type }) => {
+const videos = (videos = initialState, { payload, type }) => {
   switch (type) {
     case ADD_CLIP:
-      video = state.videos[payload.videoIndex];
+      video = videos[payload.videoIndex];
       ({ clips } = video);
-      return {
-        ...state,
-        videos: Object.assign([], state.videos, {
-          [payload.videoIndex]: {
-            ...video,
-            clips: [
-              ...clips,
-              payload.clip
-            ]
-          }
-        })
-      };
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          clips: [
+            ...clips,
+            payload.clip
+          ]
+        }
+      });
 
     case EDIT_CLIP:
-      video = state.videos[payload.videoIndex];
+      video = videos[payload.videoIndex];
       ({ clips } = video);
-      return {
-        ...state,
-        videos: Object.assign([], state.videos, {
-          [payload.videoIndex]: {
-            ...video,
-            clips: Object.assign([], clips, {
-              [payload.clipIndex]: payload.clip
-            })
-          }
-        })
-      };
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          clips: Object.assign([], clips, {
+            [payload.clipIndex]: payload.clip
+          })
+        }
+      });
 
     case REMOVE_CLIP:
-      video = state.videos[payload.videoIndex];
+      video = videos[payload.videoIndex];
       ({ clips } = video);
-      return {
-        ...state,
-        videos: Object.assign([], state.videos, {
-          [payload.videoIndex]: {
-            ...video,
-            clips:
-              clips
-                .slice(0, payload.clipIndex)
-                .concat(clips.slice(payload.clipIndex + 1))
-          }
-        })
-      };
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          clips:
+            clips
+              .slice(0, payload.clipIndex)
+              .concat(clips.slice(payload.clipIndex + 1))
+        }
+      });
+
+    case SET_DURATION:
+      video = videos[payload.videoIndex];
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          duration: payload.duration,
+          loading: false
+        }
+      });
 
     default:
-      return state;
+      return { ...videos };
   }
 };
 

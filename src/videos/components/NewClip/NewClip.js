@@ -4,9 +4,6 @@ import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
   rightIcon: {
     marginLeft: theme.spacing.unit,
   }
@@ -14,7 +11,6 @@ const styles = theme => ({
 
 const NewClip = ({ classes, setAdding }) => (
   <Button
-    // className={classes.button}
     color="primary"
     onClick={setAdding}
     variant="contained"

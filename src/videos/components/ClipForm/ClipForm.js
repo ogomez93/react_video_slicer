@@ -19,18 +19,24 @@ const styles = theme => ({
   },
   paper: {
     padding: theme.spacing.unit * 2,
+    minWidth: 412,
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 300
+    }
   },
   textField: {
     width: '100%',
-    margin: 0
+    margin: 0,
+    marginBottom: theme.spacing.unit
   }
 });
 
 const ClipForm = ({
   classes,
+  name,
+  start,
+  video: { duration },
   end,
-  name = '',
-  start = 0,
   clipIndex = '',
   videoIndex = '',
   onEndChange,
@@ -57,26 +63,33 @@ const ClipForm = ({
             alignItems="center"
             container
             justify="space-between"
-            spacing={16}
           >
             <Grid item xs={12} sm={6}>
               <TextField
                 id="clipStart"
-                label="From"
                 className={classes.textField}
-                value={start}
-                onChange={onStartChange}
+                label="From"
                 margin="normal"
+                InputProps={{
+                  inputProps: { min: 0, max: end }
+                }}
+                value={start || 0}
+                type="number"
+                onChange={onStartChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="clipEnd"
-                label="To"
                 className={classes.textField}
-                value={end}
-                onChange={onEndChange}
+                label="To"
                 margin="normal"
+                InputProps={{
+                  inputProps: { min: start, max: duration }
+                }}
+                value={end}
+                type="number"
+                onChange={onEndChange}
               />
             </Grid>
           </Grid>
