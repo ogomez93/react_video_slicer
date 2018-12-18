@@ -7,7 +7,7 @@ const timeIsValid = (start, end) =>
 
 export const clipErrors = ({ name, start, end }) => {
   const errors = {};
-  if (!nameIsValid(name)) errors.name = 'Name must not be empty';
-  if (!timeIsValid(start, end)) errors.time = 'Invalid time range.';
+  if (!nameIsValid(name)) errors.name = 'The clip must have a name';
+  if (!timeIsValid(start, end)) errors.time = 'Invalid time range';
   return errors;
 }
