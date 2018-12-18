@@ -1,10 +1,18 @@
 import React, { Fragment } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import ClipForm from 'videos/components/ClipForm';
 
+const styles = () => ({
+  dialogContent: {
+    overflow: 'hidden'
+  }
+});
+
 const EditItemDialog = ({
+  classes,
   dialogTitle,
   end,
   name,
@@ -18,7 +26,7 @@ const EditItemDialog = ({
     <DialogTitle id={dialogTitle}>
       Editing clip
     </DialogTitle>
-    <DialogContent>
+    <DialogContent className={classes.dialogContent}>
       <ClipForm
         end={end}
         name={name}
@@ -32,4 +40,4 @@ const EditItemDialog = ({
   </Fragment>
 );
 
-export default EditItemDialog
+export default withStyles(styles)(EditItemDialog);
