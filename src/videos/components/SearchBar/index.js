@@ -5,6 +5,7 @@ import SearchBar from './SearchBar';
 
 import { emptyFilters, setFilters } from 'filters/actions';
 
+import withDisabledProp from './utils/withDisabledProp';
 import { withName, withTag } from './utils/withFilters';
 import { onNameChange, onTagChange } from './utils/handlers';
 
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch, props) => ({
 });
 
 export default compose(
+  withDisabledProp,
   withName,
   withTag,
   withHandlers({ onNameChange, onTagChange }),

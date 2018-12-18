@@ -21,6 +21,7 @@ const styles = theme => ({
 
 const SearchBar = ({
   classes,
+  disabled,
   name,
   tag,
   onNameChange,
@@ -31,40 +32,43 @@ const SearchBar = ({
   <form className={classes.container} autoComplete="off" onSubmit={onSubmit}>
     <Grid
       container
+      alignItems="stretch"
       direction="row"
       justify="stretch"
-      alignItems="stretch"
     >
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <TextField
             id="searchNameBar"
-            label="Search clips by name"
             className={classes.textField}
-            value={name}
-            onChange={onNameChange}
+            disabled={disabled}
+            label="Search clips by name"
             margin="normal"
+            onChange={onNameChange}
+            value={name}
           />
           </Grid>
           <Grid item xs={12} sm={6}>
           <TextField
             id="searchTagBar"
-            label="Search clips by tag"
             className={classes.textField}
-            value={tag}
-            onChange={onTagChange}
+            disabled={disabled}
+            label="Search clips by tag"
             margin="normal"
+            onChange={onTagChange}
+            value={tag}
           />
         </Grid>
       </Grid>
       <Grid
         container
+        alignItems="flex-end"
         direction="row"
         justify="flex-end"
-        alignItems="flex-end"
       >
         <Button
           className={classes.button}
+          disabled={disabled}
           onClick={onReset}
         >
           Reset filters
@@ -72,8 +76,9 @@ const SearchBar = ({
         <Button
           className={classes.button}
           color="primary"
-          type="submit"
+          disabled={disabled}
           onClick={onSubmit}
+          type="submit"
         >
           Search
         </Button>

@@ -89,7 +89,7 @@ const Videos = ({
           <Paper className={classes.listPaper}>
             <Grid container spacing={24} alignItems="center">
               <Grid item xs={12}>
-                <SearchBar />
+                <SearchBar video={video} />
               </Grid>
             </Grid>
             <Divider className={classes.sectionDivider} />
