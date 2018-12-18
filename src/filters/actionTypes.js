@@ -1,2 +1,2 @@
-export const SET_NAME_FILTER = 'filters/SET_NAME_FILTER';
-export const SET_TAG_FILTER = 'filters/SET_TAG_FILTER';
+export const EMPTY_FILTERS = 'filters/EMPTY_FILTERS';
+export const SET_FILTERS = 'filters/SET_FILTERS';

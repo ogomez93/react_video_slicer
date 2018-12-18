@@ -1,33 +1,30 @@
-import { setNameFilter, setTagFilter } from '../actions';
-import { SET_NAME_FILTER, SET_TAG_FILTER } from '../actionTypes';
+import { emptyFilters, setFilters } from '../actions';
+import { EMPTY_FILTERS, SET_FILTERS } from '../actionTypes';
 
 describe('Videos / Actions', () => {
   let result;
   let nameFilter, tagFilter;
 
-  describe('setNameFilter', () => {
+  describe('emptyFilters', () => {
     beforeAll(() => {
-      nameFilter = 'nameFilter';
-      result = setNameFilter(nameFilter);
+      result = emptyFilters();
     });
 
-    it('should return a SET_NAME_FILTER action with the corresponding nameFilter', () =>
-      expect(result).toEqual({
-        type: SET_NAME_FILTER,
-        payload: { nameFilter }
-      }));
+    it('should return a EMPTY_FILTERS action', () =>
+      expect(result).toEqual({ type: EMPTY_FILTERS }));
   });
 
-  describe('setTagFilter', () => {
+  describe('setFilters', () => {
     beforeAll(() => {
+      nameFilter = 'nameFilter';
       tagFilter = 'tagFilter';
-      result = setTagFilter(tagFilter);
+      result = setFilters(nameFilter, tagFilter);
     });
 
-    it('should return a SET_TAG_FILTER action with the corresponding tagFilter', () =>
+    it('should return a SET_FILTERS action with the corresponding filters', () =>
       expect(result).toEqual({
-        type: SET_TAG_FILTER,
-        payload: { tagFilter }
+        type: SET_FILTERS,
+        payload: { nameFilter, tagFilter }
       }));
   });
 });

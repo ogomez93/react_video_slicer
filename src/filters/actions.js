@@ -1,15 +1,13 @@
-import { SET_NAME_FILTER, SET_TAG_FILTER } from './actionTypes';
+import { EMPTY_FILTERS, SET_FILTERS } from './actionTypes';
 
-export const setNameFilter = nameFilter => ({
-  type: SET_NAME_FILTER,
-  payload: {
-    nameFilter
-  }
+export const emptyFilters = () => ({
+  type: EMPTY_FILTERS
 });
 
-export const setTagFilter = tagFilter => ({
-  type: SET_TAG_FILTER,
+export const setFilters = (nameFilter = '', tagFilter = '') => ({
+  type: SET_FILTERS,
   payload: {
+    nameFilter,
     tagFilter
   }
 });

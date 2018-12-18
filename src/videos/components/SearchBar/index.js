@@ -3,20 +3,27 @@ import { compose, withHandlers } from 'recompose';
 
 import SearchBar from './SearchBar';
 
-import { setNameFilter } from 'filters/actions';
+import { emptyFilters, setFilters } from 'filters/actions';
 
-import withName from './utils/withName';
-import { onNameChange } from './utils/handlers';
+import { withName, withTag } from './utils/withFilters';
+import { onNameChange, onTagChange } from './utils/handlers';
 
-const mapDispatchToProps = (dispatch, { name }) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   onSubmit: event => {
     event.preventDefault();
-    dispatch(setNameFilter(name));
+    dispatch(setFilters(props.name, props.tag));
+  },
+  onReset: event => {
+    event.preventDefault();
+    props.setName('');
+    props.setTag('');
+    dispatch(emptyFilters());
   }
 });
 
 export default compose(
   withName,
-  withHandlers({ onNameChange }),
+  withTag,
+  withHandlers({ onNameChange, onTagChange }),
   connect(null, mapDispatchToProps)
 )(SearchBar)

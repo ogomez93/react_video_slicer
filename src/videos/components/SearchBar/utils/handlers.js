@@ -1,3 +1,5 @@
-export const onNameChange = ({ setName }) => ({
-  target: { value = '' } = {}
-}) => setName(value);
+const onFilterChange = setFilter =>
+  ({ target: { value = '' } }) => setFilter(value);
+
+export const onNameChange = ({ setName }) => onFilterChange(setName);
+export const onTagChange = ({ setTag }) => onFilterChange(setTag);

@@ -1,23 +1,25 @@
-import { SET_NAME_FILTER, SET_TAG_FILTER } from './actionTypes';
+import { EMPTY_FILTERS, SET_FILTERS } from './actionTypes';
 
 import initialState from './constants/initialState';
 
 const filters = (state = initialState, action) => {
   switch (action.type) {
-    case SET_NAME_FILTER:
+    case EMPTY_FILTERS:
       return {
         ...state,
         filters: {
           ...state.filters,
-          nameFilter: action.payload.nameFilter
+          nameFilter: '',
+          tagFilter: ''
         }
       }
 
-    case SET_TAG_FILTER:
+    case SET_FILTERS:
       return {
         ...state,
         filters: {
           ...state.filters,
+          nameFilter: action.payload.nameFilter,
           tagFilter: action.payload.tagFilter
         }
       }

@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 
 import ClipList from 'videos/components/ClipList';
-import FullVideoButton from 'videos/components/FullVideoButton';
 import NewClip from 'videos/components/NewClip';
 import SearchBar from 'videos/components/SearchBar';
 import VideoInfo from 'videos/components/VideoInfo';
@@ -89,11 +88,8 @@ const Videos = ({
         <Grid container className={classes.columnContainer}>
           <Paper className={classes.listPaper}>
             <Grid container spacing={24} alignItems="center">
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12}>
                 <SearchBar />
-              </Grid>
-              <Grid item xs={12} md={6}>
-
               </Grid>
             </Grid>
             <Divider className={classes.sectionDivider} />

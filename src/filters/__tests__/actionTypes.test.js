@@ -1,16 +1,13 @@
-import {
-  SET_NAME_FILTER,
-  SET_TAG_FILTER
-} from '../actionTypes';
+import { EMPTY_FILTERS, SET_FILTERS } from '../actionTypes';
 
 describe('Videos / ActionTypes', () => {
-  describe('SET_NAME_FILTER', () => {
-    it('should equal "filters/SET_NAME_FILTER"', () =>
-      expect(SET_NAME_FILTER).toEqual('filters/SET_NAME_FILTER'));
+  describe('SET_FILTERS', () => {
+    it('should equal "filters/SET_FILTERS"', () =>
+      expect(SET_FILTERS).toEqual('filters/SET_FILTERS'));
   });
 
-  describe('SET_TAG_FILTER', () => {
-    it('should equal "filters/SET_TAG_FILTER"', () =>
-      expect(SET_TAG_FILTER).toEqual('filters/SET_TAG_FILTER'));
+  describe('EMPTY_FILTERS', () => {
+    it('should equal "filters/EMPTY_FILTERS"', () =>
+      expect(EMPTY_FILTERS).toEqual('filters/EMPTY_FILTERS'));
   });
 });
