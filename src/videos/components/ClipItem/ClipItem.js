@@ -59,7 +59,7 @@ const ClipItem = ({
       </ListItemIcon>
       <ListItemText
         primary={name}
-        secondary={`${formatTime(start)} - ${formatTime(end)}`}
+        secondary={`${formatTime(start, video.duration)} - ${formatTime(end, video.duration)}`}
         onClick={setClip}
         clipindex={clipIndex}
       />

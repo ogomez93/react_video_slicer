@@ -1,16 +1,16 @@
 const nameIsValid = name => name !== '';
 
-const timeIsValid = (start, end, duration) =>
+const timeIsValid = (start, end) =>
   start < end &&
-  start < duration &&
-  end <= duration;
+  start < 100 &&
+  end <= 100;
 
-export const clipErrors = ({ name, start, end }, duration) => {
+export const clipErrors = ({ name, start, end }) => {
   const errors = [];
   if (!nameIsValid(name)) {
     errors.push('Name must not be empty.');
   }
-  if (!timeIsValid(start, end, duration)) {
+  if (!timeIsValid(start, end)) {
     errors.push('Invalid time range.');
   }
   return errors;

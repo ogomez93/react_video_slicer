@@ -32,15 +32,15 @@ class VideoPlayer extends Component {
     }
   }
 
-  formatTime = (number) => number.toFixed(TIME_PRECISION);
+  formatTimeToFixed = (number) => parseFloat(number.toFixed(TIME_PRECISION));
   getVideo = () => this.videoRef.current;
-  getCurrentTime = () => this.formatTime(this.getVideo().currentTime);
+  getCurrentTime = () => this.formatTimeToFixed(this.getVideo().currentTime);
   videoPaused = () => this.videoRef.current.paused;
 
   onTimeUpdate = () => {
     if (this.props.clip !== undefined) {
       let currentTime = this.getCurrentTime();
-      const endTime = this.formatTime(this.props.clip.end);
+      const endTime = this.formatTimeToFixed(this.props.clip.end);
       currentTime > endTime && this.getVideo().pause();
     }
   }
@@ -51,8 +51,8 @@ class VideoPlayer extends Component {
     if (this.props.clip === undefined) return this.getVideo().play();
 
     const currentTime = this.getCurrentTime();
-    const startTime = this.formatTime(this.props.clip.start);
-    const endTime = this.formatTime(this.props.clip.end);
+    const startTime = this.formatTimeToFixed(this.props.clip.start);
+    const endTime = this.formatTimeToFixed(this.props.clip.end);
     if (currentTime < startTime || endTime <= currentTime) {
       this.videoRef.current.currentTime = startTime;
     }

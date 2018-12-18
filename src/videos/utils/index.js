@@ -10,8 +10,10 @@ export const formatDuration = timeInSeconds => {
     : formatTime(fixedTimeInSeconds);
 };
 
-export const formatTime = timeInSeconds => {
-  const minutes = formatToTime(parseInt(timeInSeconds / 60));
-  const seconds = formatToTime(parseInt(timeInSeconds % 60));
+export const formatTime = (percentage, duration = 100) => {
+  if (isNaN(percentage)) return undefined;
+  const time = parseFloat(percentage * duration / 100);
+  const minutes = formatToTime(parseInt(time / 60));
+  const seconds = formatToTime(parseInt(time % 60));
   return `${minutes}:${seconds}`;
 };

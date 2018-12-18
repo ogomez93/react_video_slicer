@@ -6,7 +6,8 @@ import VideoPlayer from './VideoPlayer';
 import { setDuration, pauseVideo, playVideo } from 'videos/actions';
 import { getSelectedClip } from 'videos/selectors/selectors';
 
-import withUrl from './utils/withUrl';
+import withMediaFragment from './utils/withMediaFragment';
+import withModifiedUrl from './utils/withModifiedUrl';
 
 const mapStateToProps = (state, props) => ({
   clip: getSelectedClip(state, props)
@@ -23,5 +24,6 @@ const mapDispatchToProps = (dispatch, { videoIndex }) => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withUrl
+  withMediaFragment,
+  withModifiedUrl
 )(VideoPlayer);
