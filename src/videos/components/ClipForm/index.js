@@ -42,7 +42,8 @@ class ClipForm extends Component {
     this.state = {
       end: props.end || 100,
       name: props.name || '',
-      start: props.start || 0
+      start: props.start || 0,
+      tag: props.tag || ''
     }
   }
 

@@ -61,6 +61,7 @@ const Videos = ({
   classes,
   clipIndex,
   setClip,
+  setClipIndex,
   setFullVideo,
   video,
   videoIndex
@@ -89,7 +90,11 @@ const Videos = ({
           <Paper className={classes.listPaper}>
             <Grid container spacing={24} alignItems="center">
               <Grid item xs={12}>
-                <SearchBar video={video} />
+                <SearchBar
+                  setClipIndex={setClipIndex}
+                  videoIndex={videoIndex}
+                  video={video}
+                />
               </Grid>
             </Grid>
             <Divider className={classes.sectionDivider} />

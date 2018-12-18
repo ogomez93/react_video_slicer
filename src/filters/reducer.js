@@ -7,21 +7,15 @@ const filters = (state = initialState, action) => {
     case EMPTY_FILTERS:
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          nameFilter: '',
-          tagFilter: ''
-        }
+        nameFilter: '',
+        tagFilter: ''
       }
 
     case SET_FILTERS:
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          nameFilter: action.payload.nameFilter,
-          tagFilter: action.payload.tagFilter
-        }
+        nameFilter: action.payload.nameFilter,
+        tagFilter: action.payload.tagFilter
       }
 
     default:

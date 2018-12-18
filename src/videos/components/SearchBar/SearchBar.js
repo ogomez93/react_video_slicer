@@ -34,7 +34,6 @@ const SearchBar = ({
       container
       alignItems="stretch"
       direction="row"
-      justify="stretch"
     >
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>

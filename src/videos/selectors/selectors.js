@@ -6,7 +6,7 @@ export const getAllVideos = ({ videos = [{}] }) => videos;
 export const getSelectedVideoIndex = ({ videos = [{}] }, { videoUrl }) =>
   videos.findIndex(currentVideo => currentVideo.videoUrl === videoUrl);
 
-export const getSelectedVideoClips = ({ videos = [{}] },{ videoIndex = 0 }) =>
+export const getSelectedVideoClips = ({ videos = [{}] }, { videoIndex = 0 }) =>
   videos[videoIndex].clips;
 
 export const getVideoDuration = (
