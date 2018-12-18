@@ -17,3 +17,6 @@ export const formatTime = (percentage, duration = 100) => {
   const seconds = formatToTime(parseInt(time % 60));
   return `${minutes}:${seconds}`;
 };
+
+export const percentageToSeconds = (percentage, duration) =>
+  parseFloat(percentage * duration / 100);

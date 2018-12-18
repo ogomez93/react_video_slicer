@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import { TIME_PRECISION } from 'videos/constants';
+import { percentageToSeconds } from 'videos/utils';
 
 const styles = () => ({
   videoPlayer: {
@@ -32,15 +33,21 @@ class VideoPlayer extends Component {
     }
   }
 
-  formatTimeToFixed = (number) => parseFloat(number.toFixed(TIME_PRECISION));
+  formatToFixed = number => parseFloat(number.toFixed(TIME_PRECISION));
+  
+  fromPercentageToSeconds = percentage =>
+    percentageToSeconds(percentage, this.props.video.duration);
+  
   getVideo = () => this.videoRef.current;
-  getCurrentTime = () => this.formatTimeToFixed(this.getVideo().currentTime);
+  
+  getCurrentTime = () => this.getVideo().currentTime;
+  
   videoPaused = () => this.videoRef.current.paused;
 
   onTimeUpdate = () => {
     if (this.props.clip !== undefined) {
       let currentTime = this.getCurrentTime();
-      const endTime = this.formatTimeToFixed(this.props.clip.end);
+      const endTime = this.fromPercentageToSeconds(this.props.clip.end);
       currentTime > endTime && this.getVideo().pause();
     }
   }
@@ -51,8 +58,8 @@ class VideoPlayer extends Component {
     if (this.props.clip === undefined) return this.getVideo().play();
 
     const currentTime = this.getCurrentTime();
-    const startTime = this.formatTimeToFixed(this.props.clip.start);
-    const endTime = this.formatTimeToFixed(this.props.clip.end);
+    const startTime = this.fromPercentageToSeconds(this.props.clip.start);
+    const endTime = this.fromPercentageToSeconds(this.props.clip.end);
     if (currentTime < startTime || endTime <= currentTime) {
       this.videoRef.current.currentTime = startTime;
     }
