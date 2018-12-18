@@ -12,6 +12,8 @@ export const onEndChange = ({ setEnd }) => onNumberChange(setEnd);
 export const onNameChange = ({ setName }) => onValueChange(setName);
 export const onStartChange = ({ setStart }) => onNumberChange(setStart);
 
+export const onFocus = () => event => event.target.select();
+
 export const onSubmit = (dispatch, {
   end,
   name,

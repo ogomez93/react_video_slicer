@@ -7,6 +7,7 @@ import {
   onEndChange,
   onNameChange,
   onStartChange,
+  onFocus,
   onSubmit
 } from './utils/formHandlers';
 import {
@@ -23,6 +24,6 @@ export default compose(
   withEndState,
   withNameState,
   withStartState,
-  withHandlers({ onEndChange, onNameChange, onStartChange }),
+  withHandlers({ onEndChange, onNameChange, onStartChange, onFocus }),
   connect(null, mapDispatchToProps)
 )(ClipForm)

@@ -35,6 +35,7 @@ const ClipForm = ({
   onNameChange,
   onStartChange,
   onCancel,
+  onFocus,
   onSubmit
 }) => (
   <form onSubmit={onSubmit} clipindex={clipIndex} videoindex={videoIndex}>
@@ -42,11 +43,12 @@ const ClipForm = ({
       <Grid item xs={12}>
         <TextField
           id="clipName"
-          label="Clip name"
           className={classes.textField}
-          value={name}
-          onChange={onNameChange}
+          label="Clip name"
           margin="normal"
+          onChange={onNameChange}
+          onFocus={onFocus}
+          value={name}
         />
       </Grid>
       <Grid item xs={12}>
@@ -59,28 +61,30 @@ const ClipForm = ({
             <TextField
               id="clipStart"
               className={classes.textField}
-              label="From"
-              margin="normal"
               InputProps={{
                 inputProps: { min: 0, max: end }
               }}
-              value={start || 0}
-              type="number"
+              label="From"
+              margin="normal"
               onChange={onStartChange}
+              onFocus={onFocus}
+              type="number"
+              value={start}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               id="clipEnd"
               className={classes.textField}
-              label="To"
-              margin="normal"
               InputProps={{
                 inputProps: { min: start, max: duration }
               }}
+              label="To"
+              margin="normal"
+              onFocus={onFocus}
+              onChange={onEndChange}
               value={end}
               type="number"
-              onChange={onEndChange}
             />
           </Grid>
         </Grid>

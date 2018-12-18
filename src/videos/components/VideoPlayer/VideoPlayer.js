@@ -1,6 +1,8 @@
 import React, { Component, createRef } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
+import { TIME_PRECISION } from 'videos/constants';
+
 const styles = () => ({
   videoPlayer: {
     width: '100%'
@@ -10,37 +12,54 @@ const styles = () => ({
 class VideoPlayer extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      paused: props.video.paused
-    }
-
+    this.state = { paused: props.video.paused };
     this.videoRef = createRef();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.video.paused !== prevState.paused) {
-      return {
-        paused: nextProps.video.paused
-      };
-    }
-    return null;
+    const { paused } = nextProps.video;
+    return paused !== prevState.paused
+      ? { paused }
+      : null;
   }
 
   componentDidUpdate(prevProps) {
     const videoPaused = this.videoPaused();
-    const prevPaused = prevProps.video.paused;
-    const thisPaused = this.props.video.paused;
+    const { paused: prevPaused } = prevProps.video;
+    const { paused: thisPaused } = this.props.video;
     if (prevPaused !== thisPaused && thisPaused !== videoPaused) {
       videoPaused ? this.playVideo() : this.pauseVideo();
     }
   }
 
-  playVideo = () => this.videoRef.current.play();
-  pauseVideo = () => this.videoRef.current.pause();
-
+  formatTime = (number) => number.toFixed(TIME_PRECISION);
+  getVideo = () => this.videoRef.current;
+  getCurrentTime = () => this.formatTime(this.getVideo().currentTime);
   videoPaused = () => this.videoRef.current.paused;
-  videoEnded = () => this.videoRef.current.ended;
+
+  onTimeUpdate = () => {
+    if (this.props.clip !== undefined) {
+      let currentTime = this.getCurrentTime();
+      const endTime = this.formatTime(this.props.clip.end);
+      currentTime > endTime && this.getVideo().pause();
+    }
+  }
+
+  pauseVideo = () => this.videoRef.current.pause();
+  
+  playVideo = () => {
+    if (this.props.clip === undefined) return this.getVideo().play();
+
+    const currentTime = this.getCurrentTime();
+    const startTime = this.formatTime(this.props.clip.start);
+    const endTime = this.formatTime(this.props.clip.end);
+    if (currentTime < startTime || endTime <= currentTime) {
+      this.videoRef.current.currentTime = startTime;
+    }
+
+    this.videoRef.current.play();
+  };
+
 
   render() {
     const {
@@ -54,13 +73,13 @@ class VideoPlayer extends Component {
     return (
       <video
         ref={this.videoRef}
-        // autoPlay
         className={classes.videoPlayer}
-        // controls
+        controls={!this.props.clip}
         name="media"
         onLoadedMetadata={onLoadedMetadata}
         onPause={onPause}
         onPlay={onPlay}
+        onTimeUpdate={this.onTimeUpdate}
         preload="metadata"
         src={url}
       />
