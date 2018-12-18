@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
-import videos from 'videos/reducer';
+import autoPlay from 'autoPlay/reducer';
 import filters from 'filters/reducer';
+import videos from 'videos/reducer';
 
-const rootReducer = combineReducers({ filters, videos });
+const rootReducer = combineReducers({ autoPlay, filters, videos });
 
 export default rootReducer;
