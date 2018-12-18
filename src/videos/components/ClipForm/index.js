@@ -31,6 +31,10 @@ const styles = theme => ({
   textField: {
     width: '100%',
     margin: 0,
+  },
+  lastTextField: {
+    width: '100%',
+    margin: 0,
     marginBottom: theme.spacing.unit
   }
 });
@@ -43,20 +47,26 @@ class ClipForm extends Component {
       end: props.end || 100,
       name: props.name || '',
       start: props.start || 0,
-      tag: props.tag || ''
+      tag: props.tag || '',
+      errors: { name: '', time: '' }
     }
   }
 
-  handleNameChange = ({ target: { value } }) =>
-    this.setState({ name: value });
+  handleTextChange = ({ target: { name, value } }) =>
+    this.setState({
+      [name]: value,
+      errors: {
+        [name]: ''
+      }
+    });
 
-  handleStartChange = (event, start) => {
+  handleStartChange = (_, start) => {
     const { end } = this.state;
     if (start >= end) start = end - 1;
     this.setState({ start });
   }
 
-  handleEndChange = (event, end) => {
+  handleEndChange = (_, end) => {
     const { start } = this.state;
     if (start >= end) end = start + 1;
     this.setState({ end });
@@ -76,14 +86,14 @@ class ClipForm extends Component {
     } = this.props;
     const errors = clipErrors(clip);
 
-    if (errors.length === 0) {
+    if (Object.keys(errors).length === 0) {
       dispatch(
         isNaN(clipIndex)
           ? addClip(clip, videoIndex)
           : editClip(clip, clipIndex, videoIndex));
       onCancel && onCancel();
     } else {
-      console.log(errors);
+      this.setState({ errors });
     }
   };
 
@@ -96,22 +106,35 @@ class ClipForm extends Component {
       onCancel,
     } = this.props;
 
-    const { name, start, end } = this.state;
+    const { name, tag, start, end, errors } = this.state;
 
     return (
       <form onSubmit={this.onSubmit} clipindex={clipIndex} videoindex={videoIndex}>
         <Grid container spacing={16}>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <TextField
               id="clipName"
               className={classes.textField}
-              label="Clip name"
+              error={errors.name !== ''}
+              label={errors.name || "Clip name"}
               margin="normal"
               name="name"
-              onChange={this.handleNameChange}
+              onChange={this.handleTextChange}
               onFocus={this.onFocus}
               required
               value={name}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="clipTag"
+              className={classes.lastTextField}
+              label="Clip tag"
+              margin="normal"
+              name="tag"
+              onChange={this.handleTextChange}
+              onFocus={this.onFocus}
+              value={tag}
             />
           </Grid>
           <Grid item xs={12}>

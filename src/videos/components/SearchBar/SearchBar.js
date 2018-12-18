@@ -45,6 +45,7 @@ const SearchBar = ({
             margin="normal"
             onChange={onNameChange}
             value={name}
+            type="search"
           />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -56,6 +57,7 @@ const SearchBar = ({
             margin="normal"
             onChange={onTagChange}
             value={tag}
+            type="search"
           />
         </Grid>
       </Grid>
