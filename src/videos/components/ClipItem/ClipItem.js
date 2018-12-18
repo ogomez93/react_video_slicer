@@ -16,6 +16,8 @@ import EditItemDialog from 'videos/components/EditItemDialog';
 import PauseButton from 'videos/components/PauseButton';
 import PlayButton from 'videos/components/PlayButton';
 
+import { formatTime } from 'videos/utils';
+
 const ClipItem = ({
   name,
   start,
@@ -57,7 +59,7 @@ const ClipItem = ({
       </ListItemIcon>
       <ListItemText
         primary={name}
-        secondary={`${start} - ${end}`}
+        secondary={`${formatTime(start)} - ${formatTime(end)}`}
         onClick={setClip}
         clipindex={clipIndex}
       />

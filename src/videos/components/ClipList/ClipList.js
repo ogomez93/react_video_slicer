@@ -9,6 +9,8 @@ import ClipItem from 'videos/components/ClipItem';
 import PauseButton from 'videos/components/PauseButton';
 import PlayButton from 'videos/components/PlayButton';
 
+import { formatDuration } from 'videos/utils';
+
 const styles = () => ({
   list: {
     overflow: 'auto',
@@ -26,7 +28,7 @@ const ClipList = ({
   <List className={classes.list}>
     <ListItem title="Play full video" selected={clipIndex === -1} button component="a">
       <ListItemText
-        primary={`Full video (duration: ${duration} seconds)`}
+        primary={`Full video (duration: ${formatDuration(duration)})`}
         secondary={videoUrl}
         secondaryTypographyProps={{
           noWrap: true,
