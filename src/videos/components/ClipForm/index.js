@@ -25,6 +25,9 @@ const styles = theme => ({
     backgroundColor: 'red',
     padding: theme.spacing.unit * 2
   },
+  slider: {
+    padding: `${theme.spacing.unit}px 0px`,
+  },
   textField: {
     width: '100%',
     margin: 0,
@@ -116,7 +119,7 @@ class ClipForm extends Component {
             </Typography>
             <Slider
               id="clipStart"
-              className={classes.textField}
+              classes={{ container: classes.slider }}
               aria-labelledby="startLabel"
               min={0}
               max={100}
@@ -131,7 +134,7 @@ class ClipForm extends Component {
             </Typography>
             <Slider
               id="clipEnd"
-              className={classes.textField}
+              classes={{ container: classes.slider }}
               aria-labelledby="endLabel"
               min={0}
               max={100}
