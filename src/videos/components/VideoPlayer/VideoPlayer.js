@@ -56,7 +56,7 @@ class VideoPlayer extends Component {
         ref={this.videoRef}
         // autoPlay
         className={classes.videoPlayer}
-        controls
+        // controls
         name="media"
         onLoadedMetadata={onLoadedMetadata}
         onPause={onPause}
