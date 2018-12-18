@@ -12,9 +12,13 @@ const mapStateToProps = (state, props) => ({
   video: getSelectedVideo(state, props)
 });
 
+const mapDispatchToProps = (dispatch, props) => ({
+  setClip: setClip(dispatch, props)
+});
+
 export default compose(
   withSelectedVideo,
   withSelectedClip,
   withHandlers({ setClip, setFullVideo }),
-  connect(mapStateToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(Main);

@@ -5,7 +5,8 @@ import LoadingVideo from './LoadingVideo';
 
 export default compose(
   branch(
-    ({ video: { loading } }) => loading,
+    ({ video: { duration, loading } }) =>
+      duration === 0 && loading,
     renderComponent(LoadingVideo)
   )
 )(ClipList);

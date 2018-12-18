@@ -6,4 +6,4 @@ import { onCancel } from './utils/handlers';
 
 export default compose(
   withHandlers({ onCancel })
-)(ClipForm)
+)(ClipForm);

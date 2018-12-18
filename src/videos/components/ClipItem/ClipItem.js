@@ -3,6 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Menu from '@material-ui/core/Menu';
@@ -12,6 +13,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import DeleteItemDialog from 'videos/components/DeleteItemDialog';
 import EditItemDialog from 'videos/components/EditItemDialog';
+import PauseButton from 'videos/components/PauseButton';
+import PlayButton from 'videos/components/PlayButton';
 
 const ClipItem = ({
   name,
@@ -35,14 +38,30 @@ const ClipItem = ({
 }) => (
   <Fragment>
     <Divider component="li" />
-    <ListItem button component="a" selected={selected}>
+    <ListItem title={`Play ${name}`} button component="a" selected={selected}>
+      <ListItemIcon>
+        {selected && !video.paused
+          ? <PauseButton
+              clipIndex={clipIndex}
+              selected={selected}
+              setClip={setClip}
+              videoIndex={videoIndex}
+            />
+          : <PlayButton
+              clipIndex={clipIndex}
+              selected={selected}
+              setClip={setClip}
+              videoIndex={videoIndex}
+            />
+        }
+      </ListItemIcon>
       <ListItemText
         primary={name}
         secondary={`${start} - ${end}`}
         onClick={setClip}
         clipindex={clipIndex}
       />
-      <ListItemSecondaryAction>
+      <ListItemSecondaryAction title={`${name} options`}>
         <IconButton
           aria-label="More"
           aria-owns={anchorEl ? 'clipMenu' : undefined}

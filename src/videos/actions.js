@@ -2,7 +2,10 @@ import {
   ADD_CLIP,
   EDIT_CLIP,
   REMOVE_CLIP,
-  SET_DURATION
+  SET_DURATION,
+  CLIP_CHANGE,
+  PAUSE_VIDEO,
+  PLAY_VIDEO
 } from './actionTypes';
 
 export const addClip = (clip, videoIndex) => ({
@@ -34,6 +37,27 @@ export const setDuration = (duration, videoIndex) => ({
   type: SET_DURATION,
   payload: {
     duration,
+    videoIndex
+  }
+});
+
+export const clipChange = videoIndex => ({
+  type: CLIP_CHANGE,
+  payload: {
+    videoIndex
+  }
+});
+
+export const pauseVideo = videoIndex => ({
+  type: PAUSE_VIDEO,
+  payload: {
+    videoIndex
+  }
+});
+
+export const playVideo = videoIndex => ({
+  type: PLAY_VIDEO,
+  payload: {
     videoIndex
   }
 });

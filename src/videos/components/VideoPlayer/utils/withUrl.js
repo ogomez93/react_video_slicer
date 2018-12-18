@@ -2,9 +2,9 @@ import { withProps } from 'recompose';
 
 export default withProps(({
   video: { videoUrl },
-  clip = {}
+  clip
 }) => ({
-  url: Object.keys(clip).length === 0
-    ? videoUrl
-    : `${videoUrl}#t=${clip.start},${clip.end}`
+  url: clip
+    ? `${videoUrl}#t=${clip.start},${clip.end}`
+    : videoUrl
 }));

@@ -2,9 +2,10 @@ import { DEFAULT_VIDEO_URL } from './index';
 
 export default [
   {
-    loading: true,
     duration: 0,
-    videoUrl: DEFAULT_VIDEO_URL,
-    clips: []
+    clips: [],
+    loading: true,
+    paused: true,
+    videoUrl: DEFAULT_VIDEO_URL
   }
 ];

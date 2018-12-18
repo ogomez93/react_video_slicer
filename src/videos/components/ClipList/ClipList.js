@@ -1,13 +1,13 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import ClipItem from 'videos/components/ClipItem';
+import PauseButton from 'videos/components/PauseButton';
+import PlayButton from 'videos/components/PlayButton';
 
 const styles = () => ({
   list: {
@@ -20,13 +20,13 @@ const ClipList = ({
   clipIndex,
   setClip,
   setFullVideo,
-  video: { clips = [], videoUrl, duration },
+  video: { clips = [], videoUrl, duration, paused },
   videoIndex
 }) => (
   <List className={classes.list}>
-    <ListItem selected={clipIndex === -1} button component="a">
+    <ListItem title="Play full video" selected={clipIndex === -1} button component="a">
       <ListItemText
-        primary={`Full video (${duration} seconds)`}
+        primary={`Full video (duration: ${duration} seconds)`}
         secondary={videoUrl}
         secondaryTypographyProps={{
           noWrap: true,
@@ -36,9 +36,20 @@ const ClipList = ({
         onClick={setClip}
       />
       <ListItemSecondaryAction>
-        <IconButton aria-label="Delete">
-          <PlayArrowIcon />
-        </IconButton>
+        {clipIndex === -1 && !paused
+          ? <PauseButton
+              clipIndex={-1}
+              selected={clipIndex === -1}
+              setClip={setClip}
+              videoIndex={videoIndex}
+            />
+          : <PlayButton
+              clipIndex={-1}
+              selected={clipIndex === -1}
+              setClip={setClip}
+              videoIndex={videoIndex}
+            />
+        }
       </ListItemSecondaryAction>
     </ListItem>
     {clips.map((clip, index) =>
@@ -49,7 +60,7 @@ const ClipList = ({
         selected={clipIndex === index}
         setClip={setClip}
         setFullVideo={setFullVideo}
-        video={{ duration, videoUrl }}
+        video={{ duration, paused, videoUrl }}
         videoIndex={videoIndex}
       />)}
   </List>

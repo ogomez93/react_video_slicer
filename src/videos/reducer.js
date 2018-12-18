@@ -2,7 +2,10 @@ import {
   ADD_CLIP,
   EDIT_CLIP,
   REMOVE_CLIP,
-  SET_DURATION
+  SET_DURATION,
+  CLIP_CHANGE,
+  PAUSE_VIDEO,
+  PLAY_VIDEO
 } from './actionTypes';
 
 import initialState from './constants/initialState';
@@ -58,6 +61,34 @@ const videos = (videos = initialState, { payload, type }) => {
           ...video,
           duration: payload.duration,
           loading: false
+        }
+      });
+
+    case CLIP_CHANGE:
+      video = setVideo(videos, payload.videoIndex);
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          loading: true,
+          paused: true
+        }
+      });
+
+    case PAUSE_VIDEO:
+      video = setVideo(videos, payload.videoIndex);
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          paused: true
+        }
+      });
+
+    case PLAY_VIDEO:
+      video = setVideo(videos, payload.videoIndex);
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          paused: false
         }
       });
 
