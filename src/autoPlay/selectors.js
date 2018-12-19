@@ -1,1 +1,1 @@
-export const getAutoPlay = state => state.autoPlay;
+export const getAutoPlay = ({ autoPlay = false }) => autoPlay;

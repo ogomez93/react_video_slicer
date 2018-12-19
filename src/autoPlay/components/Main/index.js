@@ -1,17 +1,8 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import Switch from '@material-ui/core/Switch';
+
+import AutoPlaySwitch from './AutoPlaySwitch';
 
 import { switchAutoPlay } from 'autoPlay/actions';
-
-const AutoPlaySwitch = ({ autoPlay, switchAutoPlay }) => (
-  <Switch
-    checked={autoPlay}
-    color="primary"
-    onChange={switchAutoPlay}
-    value="autoPlay"
-  />
-);
 
 const mapStateToProps = state => ({
   autoPlay: state.autoPlay
