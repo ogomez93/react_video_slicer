@@ -1,4 +1,4 @@
-export const valueMatchesFilter = (value = '', filter = '') =>
+const valueMatchesFilter = (value = '', filter = '') =>
   value.toLowerCase().trim().includes(filter.toLowerCase().trim());
 
 const filteredClips = (clips, nameFilter, tagFilter) =>
