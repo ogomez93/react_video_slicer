@@ -18,8 +18,11 @@ import PlayButton from 'videos/components/PlayButton';
 
 import { formatTime } from 'videos/utils';
 
+const clipText = (name, tag) => tag ? `${name} (${tag})` : name;
+
 const ClipItem = ({
   name,
+  tag,
   start,
   end,
   video,
@@ -58,7 +61,7 @@ const ClipItem = ({
         }
       </ListItemIcon>
       <ListItemText
-        primary={name}
+        primary={clipText(name, tag)}
         secondary={`${formatTime(start, video.duration)} - ${formatTime(end, video.duration)}`}
         onClick={setClip}
         clipindex={clipIndex}
