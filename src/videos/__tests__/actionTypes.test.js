@@ -2,7 +2,10 @@ import {
   ADD_CLIP,
   EDIT_CLIP,
   REMOVE_CLIP,
-  SET_DURATION
+  SET_DURATION,
+  CLIP_CHANGE,
+  PAUSE_VIDEO,
+  PLAY_VIDEO
 } from '../actionTypes';
 
 describe('Videos / ActionTypes', () => {
@@ -24,5 +27,20 @@ describe('Videos / ActionTypes', () => {
   describe('SET_DURATION', () => {
     it('should equal "videos/SET_DURATION"', () =>
       expect(SET_DURATION).toEqual('videos/SET_DURATION'));
+  });
+
+  describe('CLIP_CHANGE', () => {
+    it('should equal "videos/CLIP_CHANGE"', () =>
+      expect(CLIP_CHANGE).toEqual('videos/CLIP_CHANGE'));
+  });
+
+  describe('PAUSE_VIDEO', () => {
+    it('should equal "videos/PAUSE_VIDEO"', () =>
+      expect(PAUSE_VIDEO).toEqual('videos/PAUSE_VIDEO'));
+  });
+
+  describe('PLAY_VIDEO', () => {
+    it('should equal "videos/PLAY_VIDEO"', () =>
+      expect(PLAY_VIDEO).toEqual('videos/PLAY_VIDEO'));
   });
 });
