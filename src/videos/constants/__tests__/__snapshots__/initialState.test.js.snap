@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Videos / Constants / initialState should match the snapshot 1`] = `
+Array [
+  Object {
+    "clips": Array [],
+    "duration": 0,
+    "loading": true,
+    "paused": true,
+    "videoUrl": "https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4",
+  },
+]
+`;
