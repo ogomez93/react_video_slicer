@@ -20,3 +20,5 @@ export const formatTime = (percentage, duration = 100) => {
 
 export const percentageToSeconds = (percentage, duration) =>
   parseFloat(percentage * duration / 100);
+
+export const clipText = (name, tag) => tag ? `${name} (${tag})` : name;

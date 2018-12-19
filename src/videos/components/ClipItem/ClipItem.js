@@ -13,12 +13,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import DeleteItemDialog from 'videos/components/DeleteItemDialog';
 import EditItemDialog from 'videos/components/EditItemDialog';
-import PauseButton from 'videos/components/PauseButton';
-import PlayButton from 'videos/components/PlayButton';
+import RenderIcon from 'videos/components/RenderIcon';
 
-import { formatTime } from 'videos/utils';
-
-const clipText = (name, tag) => tag ? `${name} (${tag})` : name;
+import { clipText, formatTime } from 'videos/utils';
 
 const ClipItem = ({
   name,
@@ -45,20 +42,13 @@ const ClipItem = ({
     <Divider component="li" />
     <ListItem title={`Play ${name}`} button component="a" selected={selected}>
       <ListItemIcon>
-        {selected && !video.paused
-          ? <PauseButton
-              clipIndex={clipIndex}
-              selected={selected}
-              setClip={setClip}
-              videoIndex={videoIndex}
-            />
-          : <PlayButton
-              clipIndex={clipIndex}
-              selected={selected}
-              setClip={setClip}
-              videoIndex={videoIndex}
-            />
-        }
+        <RenderIcon
+          clipIndex={clipIndex}
+          selected={selected}
+          setClip={setClip}
+          video={video}
+          videoIndex={videoIndex}
+        />
       </ListItemIcon>
       <ListItemText
         primary={clipText(name, tag)}

@@ -48,16 +48,14 @@ class ClipForm extends Component {
       name: props.name || '',
       start: props.start || 0,
       tag: props.tag || '',
-      errors: { name: '', time: '' }
-    }
+      errors: { name: '', tag: '', time: '' }
+    };
   }
 
   handleTextChange = ({ target: { name, value } }) =>
     this.setState({
       [name]: value,
-      errors: {
-        [name]: ''
-      }
+      errors: { ...this.state.errors, [name]: '' }
     });
 
   handleStartChange = (_, start) => {

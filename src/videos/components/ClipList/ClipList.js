@@ -9,6 +9,7 @@ import NoVisibleClips from './NoVisibleClips';
 const styles = () => ({
   list: {
     overflow: 'auto',
+    padding: '0 12px'
   }
 });
 
@@ -18,7 +19,6 @@ const ClipList = ({
   setClip,
   setFullVideo,
   video,
-  video: { clips = [], videoUrl, duration, paused },
   videoIndex,
   visibleClips
 }) => (
@@ -30,7 +30,7 @@ const ClipList = ({
       videoIndex={videoIndex}
     />
     {
-      clips.length > 0 && visibleClips.length === 0
+      video.clips.length > 0 && visibleClips.length === 0
         ? <NoVisibleClips />
         : visibleClips.map((clip, index) =>
             <ClipItem
@@ -40,7 +40,7 @@ const ClipList = ({
               selected={clipIndex === index}
               setClip={setClip}
               setFullVideo={setFullVideo}
-              video={{ duration, paused, videoUrl }}
+              video={video}
               videoIndex={videoIndex}
             />)
     }
