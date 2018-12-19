@@ -60,7 +60,7 @@ class VideoControls extends Component {
       classes,
       video: { paused },
       onClick,
-      onDoubleClick
+      // onDoubleClick
     } = this.props;
 
     return (
