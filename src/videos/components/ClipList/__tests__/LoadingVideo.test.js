@@ -8,7 +8,7 @@ describe('Videos / Components / ClipList / LoadingVideo', () => {
   let loadingVideo, wrapper;
 
   beforeAll(() => {
-    mount = createMount()
+    mount = createMount();
     wrapper = mount(<LoadingVideo />);
     loadingVideo = wrapper.find('LoadingVideo');
   });
