@@ -5,7 +5,7 @@ import { getNameFilter, getTagFilter } from 'filters/selectors';
 
 import filteredClips from './utils/filteredClips';
 
-export const getClips = createSelector(
+export const getVisibleClips = createSelector(
   [getSelectedVideoClips, getNameFilter, getTagFilter],
   (clips, nameFilter, tagFilter) =>
     filteredClips(clips, nameFilter, tagFilter)
