@@ -8,49 +8,53 @@ import {
   PLAY_VIDEO
 } from './actionTypes';
 
+import { saveClipsToLocalStorage } from 'videos/utils';
+
 import initialState from './constants/initialState';
 
 const setVideo = (videos, index) => videos[index];
 
-let clips, video;
+let clips, newClips, video;
 
 const videos = (videos = initialState, { payload, type }) => {
   switch (type) {
     case ADD_CLIP:
       video = setVideo(videos, payload.videoIndex);
       ({ clips } = video);
+      newClips = [...video.clips, payload.clip];
+      saveClipsToLocalStorage(newClips);
       return Object.assign([], videos, {
         [payload.videoIndex]: {
           ...video,
-          clips: [
-            ...clips,
-            payload.clip
-          ]
+          clips: newClips
         }
       });
 
     case EDIT_CLIP:
       video = setVideo(videos, payload.videoIndex);
       ({ clips } = video);
+      newClips = Object.assign([], clips, {
+        [payload.clipIndex]: payload.clip
+      });
+      saveClipsToLocalStorage(newClips);
       return Object.assign([], videos, {
         [payload.videoIndex]: {
           ...video,
-          clips: Object.assign([], clips, {
-            [payload.clipIndex]: payload.clip
-          })
+          clips: newClips
         }
       });
 
     case REMOVE_CLIP:
       video = setVideo(videos, payload.videoIndex);
       ({ clips } = video);
+      newClips = clips
+        .slice(0, payload.clipIndex)
+        .concat(clips.slice(payload.clipIndex + 1));
+      saveClipsToLocalStorage(newClips);
       return Object.assign([], videos, {
         [payload.videoIndex]: {
           ...video,
-          clips:
-            clips
-              .slice(0, payload.clipIndex)
-              .concat(clips.slice(payload.clipIndex + 1))
+          clips: newClips
         }
       });
 

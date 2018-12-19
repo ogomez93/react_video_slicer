@@ -1,4 +1,4 @@
-import { TIME_PRECISION } from 'videos/constants';
+import { LOCAL_STORAGE_CLIPS_KEY, TIME_PRECISION } from 'videos/constants';
 
 const fixNumber = number => parseFloat(number.toFixed(TIME_PRECISION));
 const formatToTime = number => number < 10 ? `0${number}` : `${number}`;
@@ -22,3 +22,9 @@ export const percentageToSeconds = (percentage, duration) =>
   parseFloat(percentage * duration / 100);
 
 export const clipText = (name, tag) => tag ? `${name} (${tag})` : name;
+
+export const saveClipsToLocalStorage = clips =>
+  window.localStorage.setItem(LOCAL_STORAGE_CLIPS_KEY, JSON.stringify(clips));
+
+export const getClipsFromLocalStorage = () =>
+  JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_CLIPS_KEY))

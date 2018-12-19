@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 
-const styles = theme => ({
+const styles = () => ({
   container: {
     zIndex: 7000,
     position: 'absolute',
@@ -48,19 +48,16 @@ class VideoControls extends Component {
   getControlsContainer = () => this.controlsContainerRef.current;
   getControlsContent = () => this.controlsContentRef.current;
 
-  onMouseEnter = () => {
+  onMouseEnter = () =>
     this.getControlsContent().classList.add(this.props.classes.show);
-  }
-  onMouseLeave = () => {
+  onMouseLeave = () =>
     this.getControlsContent().classList.remove(this.props.classes.show);
-  }
 
   render() {
     const {
       classes,
       video: { paused },
       onClick,
-      // onDoubleClick
     } = this.props;
 
     return (
@@ -73,7 +70,6 @@ class VideoControls extends Component {
         <div
           ref={this.controlsContentRef}
           className={classes.content}
-          // onDoubleClick={onDoubleClick}
         >
           <div className={classes.playBackButtonContainer}>
             {

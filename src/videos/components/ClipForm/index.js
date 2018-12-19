@@ -11,7 +11,7 @@ import Slider from '@material-ui/lab/Slider';
 import { addClip, editClip } from 'videos/actions';
 import { formatTime } from 'videos/utils';
 
-import { clipErrors } from './utils/validations';
+import { getClipErrors } from './utils/validations';
 
 const styles = theme => ({
   button: {
@@ -75,23 +75,23 @@ class ClipForm extends Component {
   onSubmit = event => {
     event.preventDefault();
 
-    const clip = this.state;
+    const { errors, ...clip } = this.state;
     const {
       clipIndex,
       dispatch,
       videoIndex,
       onCancel
     } = this.props;
-    const errors = clipErrors(clip);
+    const clipErrors = getClipErrors(clip);
 
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(clipErrors).length === 0) {
       dispatch(
         isNaN(clipIndex)
           ? addClip(clip, videoIndex)
           : editClip(clip, clipIndex, videoIndex));
       onCancel && onCancel();
     } else {
-      this.setState({ errors });
+      this.setState({ errors: clipErrors });
     }
   };
 

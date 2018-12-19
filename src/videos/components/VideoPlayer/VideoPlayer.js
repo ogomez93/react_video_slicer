@@ -82,13 +82,6 @@ class VideoPlayer extends Component {
     }
   }
 
-  // onDoubleClick = () => {
-  //   const video = this.getVideo();
-  //   this.videoIsFullScreen()
-  //     ? video.exitFullscreen()
-  //     : video.requestFullscreen();
-  // }
-
   render() {
     const {
       classes,
@@ -106,7 +99,6 @@ class VideoPlayer extends Component {
           clip &&
           <VideoControls
             onClick={this.onClick}
-            // onDoubleClick={this.onDoubleClick}
             video={video}
           />
         }
