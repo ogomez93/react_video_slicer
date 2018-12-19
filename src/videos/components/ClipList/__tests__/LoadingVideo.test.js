@@ -11,7 +11,6 @@ describe('Videos / Components / ClipList / LoadingVideo', () => {
     mount = createMount()
     wrapper = mount(<LoadingVideo />);
     loadingVideo = wrapper.find('LoadingVideo');
-    console.log(loadingVideo.debug());
   });
 
   it('should render', () =>

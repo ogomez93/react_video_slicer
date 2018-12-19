@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Videos / Constants / index DEFAULT_VIDEO_URL should match the snapshot 1`] = `"https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"`;
+
+exports[`Videos / Constants / index LOCAL_STORAGE_CLIPS_KEY should match the snapshot 1`] = `"videoSlicerClips"`;
+
+exports[`Videos / Constants / index TIME_PRECISION should match the snapshot 1`] = `6`;
