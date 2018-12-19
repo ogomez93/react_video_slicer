@@ -34,8 +34,9 @@ const SearchBar = ({
 }) => (
   <Fragment>
     <Typography>
-      Auto play
+      AUTOPLAY
       <AutoPlaySwitch />
+      (not working yet)
     </Typography>
     <form className={classes.container} autoComplete="off" onSubmit={onSubmit}>
       <Grid
