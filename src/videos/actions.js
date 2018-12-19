@@ -3,6 +3,7 @@ import {
   EDIT_CLIP,
   REMOVE_CLIP,
   SET_DURATION,
+  REMOVE_ALL_CLIPS,
   CLIP_CHANGE,
   PAUSE_VIDEO,
   PLAY_VIDEO
@@ -37,6 +38,13 @@ export const setDuration = (duration, videoIndex) => ({
   type: SET_DURATION,
   payload: {
     duration,
+    videoIndex
+  }
+});
+
+export const removeAllClips = videoIndex => ({
+  type: REMOVE_ALL_CLIPS,
+  payload: {
     videoIndex
   }
 });

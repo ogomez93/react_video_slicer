@@ -3,6 +3,7 @@ import {
   EDIT_CLIP,
   REMOVE_CLIP,
   SET_DURATION,
+  REMOVE_ALL_CLIPS,
   CLIP_CHANGE,
   PAUSE_VIDEO,
   PLAY_VIDEO
@@ -27,6 +28,11 @@ describe('Videos / ActionTypes', () => {
   describe('SET_DURATION', () => {
     it('should equal "videos/SET_DURATION"', () =>
       expect(SET_DURATION).toEqual('videos/SET_DURATION'));
+  });
+
+  describe('REMOVE_ALL_CLIPS', () => {
+    it('should equal "videos/REMOVE_ALL_CLIPS"', () =>
+      expect(REMOVE_ALL_CLIPS).toEqual('videos/REMOVE_ALL_CLIPS'));
   });
 
   describe('CLIP_CHANGE', () => {

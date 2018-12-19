@@ -4,11 +4,13 @@ import { compose, withHandlers } from 'recompose';
 import SearchBar from './SearchBar';
 
 import { emptyFilters, setFilters } from 'filters/actions';
-import { clipChange } from 'videos/actions';
+import { clipChange, removeAllClips } from 'videos/actions';
 
 import withDisabledProp from './utils/withDisabledProp';
 import { withName, withTag } from './utils/withFilters';
 import { onNameChange, onTagChange } from './utils/handlers';
+import withDialogState from './utils/withDialogState';
+import { closeDialog, openDialog } from './utils/withDialogHandlers';
 
 const mapDispatchToProps = (dispatch, props) => ({
   onSubmit: event => {
@@ -28,13 +30,28 @@ const mapDispatchToProps = (dispatch, props) => ({
     setClipIndex(-1);
     dispatch(clipChange(videoIndex))
     dispatch(emptyFilters());
+  },
+  removeAllClips: event => {
+    event.preventDefault();
+
+    const { setClipIndex, setDeleteDialog, videoIndex } = props;
+    setDeleteDialog(false);
+    setClipIndex(-1);
+    dispatch(clipChange(videoIndex));
+    dispatch(removeAllClips(videoIndex));
   }
 });
 
 export default compose(
   withDisabledProp,
+  withDialogState,
   withName,
   withTag,
-  withHandlers({ onNameChange, onTagChange }),
+  withHandlers({
+    onNameChange,
+    onTagChange,
+    closeDialog,
+    openDialog
+  }),
   connect(null, mapDispatchToProps)
 )(SearchBar)

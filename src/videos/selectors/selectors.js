@@ -13,4 +13,4 @@ export const getVideoDuration = (state, props) =>
   getSelectedVideo(state, props).duration;
 
 export const getSelectedClip = (state, props) =>
-  getSelectedVideo(state, props).clips[props.clipIndex || -1];
+  getSelectedVideo(state, props).clips[props.clipIndex];

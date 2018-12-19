@@ -3,6 +3,7 @@ import {
   editClip,
   removeClip,
   setDuration,
+  removeAllClips,
   clipChange,
   pauseVideo,
   playVideo
@@ -13,6 +14,7 @@ import {
   EDIT_CLIP,
   REMOVE_CLIP,
   SET_DURATION,
+  REMOVE_ALL_CLIPS,
   CLIP_CHANGE,
   PAUSE_VIDEO,
   PLAY_VIDEO
@@ -76,6 +78,19 @@ describe('Videos / Actions', () => {
       expect(result).toEqual({
         type: SET_DURATION,
         payload: { duration, videoIndex }
+      }));
+  });
+
+  describe('removeAllClips', () => {
+    beforeAll(() => {
+      videoIndex = 0;
+      result = removeAllClips(videoIndex);
+    });
+
+    it('should return a SET_DURATION action with the passed duration and videoIndex', () =>
+      expect(result).toEqual({
+        type: REMOVE_ALL_CLIPS,
+        payload: { videoIndex }
       }));
   });
 

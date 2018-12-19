@@ -3,6 +3,7 @@ import {
   EDIT_CLIP,
   REMOVE_CLIP,
   SET_DURATION,
+  REMOVE_ALL_CLIPS,
   CLIP_CHANGE,
   PAUSE_VIDEO,
   PLAY_VIDEO
@@ -54,6 +55,18 @@ const videos = (videos = initialState, { payload, type }) => {
       return Object.assign([], videos, {
         [payload.videoIndex]: {
           ...video,
+          clips: newClips
+        }
+      });
+
+    case REMOVE_ALL_CLIPS:
+      video = setVideo(videos, payload.videoIndex);
+      newClips = [];
+      saveClipsToLocalStorage(newClips);
+      return Object.assign([], videos, {
+        [payload.videoIndex]: {
+          ...video,
+          loading: false,
           clips: newClips
         }
       });

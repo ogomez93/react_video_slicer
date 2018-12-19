@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import AutoPlaySwitch from 'autoPlay/components/Main';
+import DeleteAllItemsDialog from 'videos/components/DeleteAllItemsDialog';
 
 const styles = theme => ({
   button: {
@@ -30,7 +32,11 @@ const SearchBar = ({
   onNameChange,
   onTagChange,
   onSubmit,
-  onReset
+  onReset,
+  removeAllClips,
+  deleteDialog,
+  openDialog,
+  closeDialog
 }) => (
   <Fragment>
     <Typography>
@@ -78,6 +84,14 @@ const SearchBar = ({
         >
           <Button
             className={classes.button}
+            color="secondary"
+            disabled={disabled}
+            onClick={openDialog}
+          >
+            Delete all clips
+          </Button>
+          <Button
+            className={classes.button}
             disabled={disabled}
             onClick={onReset}
           >
@@ -95,6 +109,19 @@ const SearchBar = ({
         </Grid>
       </Grid>
     </form>
+    <Dialog
+        open={deleteDialog}
+        onClose={closeDialog}
+        aria-labelledby="deleteAllItemsDialog"
+        aria-describedby="deleteAllItemsDialogDescription"
+      >
+        <DeleteAllItemsDialog
+          dialogTitle="deleteAllItemsDialog"
+          dialogDescription="deleteAllItemsDialogDescription"
+          onClose={closeDialog}
+          removeAllClips={removeAllClips}
+        />
+      </Dialog>
   </Fragment>
 );
 
