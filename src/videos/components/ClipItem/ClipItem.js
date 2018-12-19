@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { withStyles } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -17,7 +18,15 @@ import RenderIcon from 'videos/components/RenderIcon';
 
 import { clipText, formatTime } from 'videos/utils';
 
+const styles = () => ({
+  icon: {
+    height: 48,
+    width: 48
+  }
+});
+
 const ClipItem = ({
+  classes,
   name,
   tag,
   start,
@@ -41,7 +50,7 @@ const ClipItem = ({
   <Fragment>
     <Divider component="li" />
     <ListItem title={`Play ${name}`} button component="a" selected={selected}>
-      <ListItemIcon>
+      <ListItemIcon className={classes.icon}>
         <RenderIcon
           clipIndex={clipIndex}
           selected={selected}
@@ -61,6 +70,7 @@ const ClipItem = ({
           aria-label="More"
           aria-owns={anchorEl ? 'clipMenu' : undefined}
           aria-haspopup="true"
+          className={classes.icon}
           onClick={openMenu}
         >
           <MoreVertIcon />
@@ -116,4 +126,4 @@ const ClipItem = ({
   </Fragment>
 );
 
-export default ClipItem;
+export default withStyles(styles)(ClipItem);
