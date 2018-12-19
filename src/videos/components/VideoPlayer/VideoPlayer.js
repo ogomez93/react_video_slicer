@@ -41,18 +41,20 @@ class VideoPlayer extends Component {
   getVideo = () => this.videoRef.current;
   
   getCurrentTime = () => this.getVideo().currentTime;
+
+  setCurrentTime = value => this.getVideo().currentTime = value;
   
-  videoPaused = () => this.videoRef.current.paused;
+  videoPaused = () => this.getVideo().paused;
 
   onTimeUpdate = () => {
     if (this.props.clip !== undefined) {
       let currentTime = this.getCurrentTime();
       const endTime = this.fromPercentageToSeconds(this.props.clip.end);
-      currentTime > endTime && this.getVideo().pause();
+      currentTime > endTime && this.pauseVideo();
     }
   }
 
-  pauseVideo = () => this.videoRef.current.pause();
+  pauseVideo = () => this.getVideo().pause();
   
   playVideo = () => {
     if (this.props.clip === undefined) return this.getVideo().play();
@@ -61,12 +63,21 @@ class VideoPlayer extends Component {
     const startTime = this.fromPercentageToSeconds(this.props.clip.start);
     const endTime = this.fromPercentageToSeconds(this.props.clip.end);
     if (currentTime < startTime || endTime <= currentTime) {
-      this.videoRef.current.currentTime = startTime;
+      this.setCurrentTime(startTime);
     }
 
-    this.videoRef.current.play();
+    this.getVideo().play();
   };
 
+  onClick = () => {
+    if (this.videoPaused()) {
+      this.props.onPlay();
+      this.playVideo();
+    } else {
+      this.props.onPause();
+      this.pauseVideo();
+    }
+  }
 
   render() {
     const {
@@ -83,6 +94,7 @@ class VideoPlayer extends Component {
         className={classes.videoPlayer}
         controls={!this.props.clip}
         name="media"
+        onClick={this.onClick}
         onLoadedMetadata={onLoadedMetadata}
         onPause={onPause}
         onPlay={onPlay}

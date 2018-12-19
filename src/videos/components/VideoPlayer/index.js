@@ -5,12 +5,14 @@ import VideoPlayer from './VideoPlayer';
 
 import { setDuration, pauseVideo, playVideo } from 'videos/actions';
 import { getSelectedClip } from 'videos/selectors/selectors';
+import { getAutoPlay } from 'autoPlay/selectors';
 
 import withMediaFragment from './utils/withMediaFragment';
 import withModifiedUrl from './utils/withModifiedUrl';
 
 const mapStateToProps = (state, props) => ({
-  clip: getSelectedClip(state, props)
+  clip: getSelectedClip(state, props),
+  autoPlay: getAutoPlay(state)
 });
 
 const mapDispatchToProps = (dispatch, { videoIndex }) => ({
