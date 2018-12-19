@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { TIME_PRECISION } from 'videos/constants';
 import { percentageToSeconds } from 'videos/utils';
+import VideoControls from 'videos/components/VideoControls';
 
 const styles = () => ({
   videoPlayer: {
@@ -25,26 +26,28 @@ class VideoPlayer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const videoPaused = this.videoPaused();
+    const videoIsPaused = this.videoIsPaused();
     const { paused: prevPaused } = prevProps.video;
     const { paused: thisPaused } = this.props.video;
-    if (prevPaused !== thisPaused && thisPaused !== videoPaused) {
-      videoPaused ? this.playVideo() : this.pauseVideo();
+    if (prevPaused !== thisPaused && thisPaused !== videoIsPaused) {
+      videoIsPaused ? this.playVideo() : this.pauseVideo();
     }
   }
 
   formatToFixed = number => parseFloat(number.toFixed(TIME_PRECISION));
-  
+
   fromPercentageToSeconds = percentage =>
     percentageToSeconds(percentage, this.props.video.duration);
-  
+
   getVideo = () => this.videoRef.current;
-  
+
   getCurrentTime = () => this.getVideo().currentTime;
 
   setCurrentTime = value => this.getVideo().currentTime = value;
-  
-  videoPaused = () => this.getVideo().paused;
+
+  videoIsPaused = () => this.getVideo().paused;
+
+  videoIsFullScreen = () => this.getVideo().fullscreenElement;
 
   onTimeUpdate = () => {
     if (this.props.clip !== undefined) {
@@ -55,7 +58,7 @@ class VideoPlayer extends Component {
   }
 
   pauseVideo = () => this.getVideo().pause();
-  
+
   playVideo = () => {
     if (this.props.clip === undefined) return this.getVideo().play();
 
@@ -70,7 +73,7 @@ class VideoPlayer extends Component {
   };
 
   onClick = () => {
-    if (this.videoPaused()) {
+    if (this.videoIsPaused()) {
       this.props.onPlay();
       this.playVideo();
     } else {
@@ -79,29 +82,48 @@ class VideoPlayer extends Component {
     }
   }
 
+  // onDoubleClick = () => {
+  //   const video = this.getVideo();
+  //   this.videoIsFullScreen()
+  //     ? video.exitFullscreen()
+  //     : video.requestFullscreen();
+  // }
+
   render() {
     const {
       classes,
+      clip,
       onLoadedMetadata,
       onPause,
       onPlay,
+      video,
       url
     } = this.props;
 
     return (
-      <video
-        ref={this.videoRef}
-        className={classes.videoPlayer}
-        controls={!this.props.clip}
-        name="media"
-        onClick={this.onClick}
-        onLoadedMetadata={onLoadedMetadata}
-        onPause={onPause}
-        onPlay={onPlay}
-        onTimeUpdate={this.onTimeUpdate}
-        preload="metadata"
-        src={url}
-      />
+      <div style={{ position: 'relative' }}>
+        {
+          clip &&
+          <VideoControls
+            onClick={this.onClick}
+            // onDoubleClick={this.onDoubleClick}
+            video={video}
+          />
+        }
+        <video
+          ref={this.videoRef}
+          className={classes.videoPlayer}
+          controls={!clip}
+          name="media"
+          onDoubleClick={clip && this.onDoubleClick}
+          onLoadedMetadata={onLoadedMetadata}
+          onPause={onPause}
+          onPlay={onPlay}
+          onTimeUpdate={this.onTimeUpdate}
+          preload="metadata"
+          src={url}
+        />
+      </div>
     );
   }
 }
