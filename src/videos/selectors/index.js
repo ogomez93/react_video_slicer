@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { getSelectedVideoClips } from './selectors';
-import { getNameFilter, getTagFilter } from 'filters/selectors/selectors';
+import { getNameFilter, getTagFilter } from 'filters/selectors';
 
 import filteredClips from './utils/filteredClips';
 
