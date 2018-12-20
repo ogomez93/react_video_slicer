@@ -24,11 +24,10 @@ const mapDispatchToProps = (dispatch, props) => ({
   onReset: event => {
     event.preventDefault();
 
-    const { setClipIndex, setName, setTag, videoIndex } = props;
+    const { setClipIndex, setName, setTag } = props;
     setName('');
     setTag('');
     setClipIndex(-1);
-    dispatch(clipChange(videoIndex))
     dispatch(emptyFilters());
   },
   removeAllClips: event => {
