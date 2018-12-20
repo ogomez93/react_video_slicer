@@ -28,7 +28,6 @@ See [demo](http://ogomez93.github.io/react_video_slicer)
   - NoVisibleClips
   - ClipList
   - index
-- DeleteItemDialog
 - EditItemDialog
 - Main
 - NewClip
