@@ -18,6 +18,8 @@ See [demo](http://ogomez93.github.io/react_video_slicer)
 
 ## Notes
 
+#### The app was originally conceived to handle multiple videos. That's why the videos state is an array and not just an object.
+
 #### AutoPlay updates store, but functionality is not developed yet
 
 #### This components need to be tested:
