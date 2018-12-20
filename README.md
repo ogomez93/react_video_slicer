@@ -32,8 +32,6 @@ See [demo](http://ogomez93.github.io/react_video_slicer)
 - EditItemDialog
 - Main
 - NewClip
-- PauseButton
-- PlayButton
 - SearchBar
 - VideoControls
 - VideoInfo
