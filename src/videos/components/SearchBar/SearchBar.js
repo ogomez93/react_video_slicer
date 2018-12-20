@@ -87,6 +87,7 @@ const SearchBar = ({
             color="secondary"
             disabled={disabled}
             onClick={openDialog}
+            size="small"
           >
             Delete all clips
           </Button>
@@ -94,6 +95,7 @@ const SearchBar = ({
             className={classes.button}
             disabled={disabled}
             onClick={onReset}
+            size="small"
           >
             Reset filters
           </Button>
@@ -102,6 +104,7 @@ const SearchBar = ({
             color="primary"
             disabled={disabled}
             onClick={onSubmit}
+            size="small"
             type="submit"
           >
             Search
