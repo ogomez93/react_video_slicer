@@ -12,19 +12,34 @@ const DeleteAllItemsDialog = ({
   removeAllClips
 }) => (
   <Fragment>
-    <DialogTitle id={dialogTitle}>
+    <DialogTitle
+      id={dialogTitle}
+      testid="DeleteAllItemsDialog.dialogTitle"
+    >
       Are you sure you want to delete all clips?
     </DialogTitle>
     <DialogContent>
-      <DialogContentText id={dialogDescription} color="secondary">
+      <DialogContentText
+        id={dialogDescription}
+        color="secondary"
+        testid="DeleteAllItemsDialog.dialogContentText"
+      >
         This action is not reversible
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={onClose} color="primary">
+      <Button
+        onClick={onClose}
+        color="primary"
+        testid="DeleteAllItemsDialog.closeButton"
+      >
         Cancel
       </Button>
-      <Button onClick={removeAllClips} color="secondary">
+      <Button
+        onClick={removeAllClips}
+        color="secondary"
+        testid="DeleteAllItemsDialog.deleteButton"
+      >
         Delete
       </Button>
     </DialogActions>
