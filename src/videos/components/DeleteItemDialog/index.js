@@ -24,10 +24,10 @@ const DeleteItemDialog = ({
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={onClose} color="primary">
+      <Button id="deleteItemDialogCancel" onClick={onClose} color="primary">
         Cancel
       </Button>
-      <Button onClick={deleteItem} color="secondary">
+      <Button id="deleteItemDialogDelete" onClick={deleteItem} color="secondary">
         Delete
       </Button>
     </DialogActions>
