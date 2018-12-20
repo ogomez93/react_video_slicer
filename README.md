@@ -15,3 +15,26 @@ See [demo](http://ogomez93.github.io/react_video_slicer)
 - Run `yarn`
 - Run `yarn start` to launch the app
 - Run `yarn test` to test the app
+
+## Notes
+
+#### AutoPlay updates store, but functionality is not developed yet
+
+#### This components need to be tested:
+- ClipForm
+- ClipItem
+- ClipList
+  - FullVideo
+  - NoVisibleClips
+  - ClipList
+  - index
+- DeleteItemDialog
+- EditItemDialog
+- Main
+- NewClip
+- PauseButton
+- PlayButton
+- SearchBar
+- VideoControls
+- VideoInfo
+- VideoPlayer 
