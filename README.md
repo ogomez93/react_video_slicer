@@ -35,5 +35,4 @@ See [demo](http://ogomez93.github.io/react_video_slicer)
 - NewClip
 - SearchBar
 - VideoControls
-- VideoInfo
 - VideoPlayer 
