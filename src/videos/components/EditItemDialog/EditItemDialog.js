@@ -7,7 +7,8 @@ import ClipForm from 'videos/components/ClipForm';
 
 const styles = () => ({
   dialogContent: {
-    overflow: 'hidden'
+    overflow: 'hidden',
+    zIndex: 9000
   }
 });
 
@@ -17,6 +18,7 @@ const EditItemDialog = ({
   end,
   name,
   start,
+  tag,
   clipIndex,
   videoIndex,
   video,
@@ -31,6 +33,7 @@ const EditItemDialog = ({
         end={end}
         name={name}
         start={start}
+        tag={tag}
         video={video}
         clipIndex={clipIndex}
         videoIndex={videoIndex}

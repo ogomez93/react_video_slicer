@@ -115,6 +115,7 @@ const ClipItem = ({
           end={end}
           name={name}
           start={start}
+          tag={tag}
           video={video}
           clipIndex={clipIndex}
           videoIndex={videoIndex}

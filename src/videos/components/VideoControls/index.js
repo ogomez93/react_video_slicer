@@ -5,14 +5,14 @@ import PauseIcon from '@material-ui/icons/Pause';
 
 const styles = () => ({
   container: {
-    zIndex: 7000,
+    zIndex: 1000,
     position: 'absolute',
     width: '100%',
     height: '100%',
     transition: 'all 300ms'
   },
   content: {
-    zIndex: 9000,
+    zIndex: 2000,
     width: '100%',
     height: '100%',
     opacity: 0
