@@ -22,7 +22,7 @@ See [demo](http://ogomez93.github.io/react_video_slicer)
 
 #### AutoPlay updates store, but functionality is not developed yet
 
-#### This components need to be tested:
+#### These components need to be tested:
 - ClipForm
 - ClipItem
 - ClipList
