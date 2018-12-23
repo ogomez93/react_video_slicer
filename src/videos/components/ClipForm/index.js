@@ -173,6 +173,7 @@ class ClipForm extends Component {
           >
             <Button
               className={classes.button}
+              id="closeClipForm"
               onClick={onCancel}
             >
               Cancel

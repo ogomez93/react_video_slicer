@@ -17,6 +17,7 @@ const NewClip = ({ classes, video: { loading }, setAdding }) => (
     className={loading ? classes.hidden : ''}
     color="primary"
     disabled={loading}
+    id="addNewClipButton"
     onClick={setAdding}
     variant="contained"
   >
