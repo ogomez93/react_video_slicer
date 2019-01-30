@@ -27,7 +27,6 @@ See [demo](http://ogomez93.github.io/react_video_slicer)
 - ClipItem
 - ClipList
   - FullVideo
-  - NoVisibleClips
   - ClipList
   - index
 - EditItemDialog
