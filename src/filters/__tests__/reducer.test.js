@@ -6,6 +6,8 @@ const initialState = {
   tagFilter: 'tagFilter'
 };
 
+const mockDefaultAction = () => ({ type: 'ANY_OTHER_ACTION' });
+
 describe('Filters / Reducer', () => {
   let result, expectedNewState;
 
@@ -34,5 +36,18 @@ describe('Filters / Reducer', () => {
 
     it('should set change filters to their new values', () =>
       expect(result).toEqual(expectedNewState));
+  });
+
+  describe('case: default', () => {
+    let newNameFilter, newTagFilter;
+
+    beforeAll(() => {
+      newNameFilter = 'new name filter';
+      newTagFilter = 'new tag filter';
+      result = filters(initialState, mockDefaultAction(newNameFilter, newTagFilter));
+    });
+
+    it('should not change the state', () =>
+      expect(result).toEqual(initialState));
   });
 });
