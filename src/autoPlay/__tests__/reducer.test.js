@@ -4,6 +4,7 @@ import { SWITCH, TURN_OFF, TURN_ON } from '../actionTypes';
 const mockSwitchAction = () => ({ type: SWITCH });
 const mockTurnOffAction = () => ({ type: TURN_OFF });
 const mockTurnOnAction = () => ({ type: TURN_ON });
+const mockDefaultAction = () => ({ type: 'ANY_OTHER_CASE' });
 
 describe('AutoPlay / Reducer', () => {
   let result, expectedNewState;
@@ -75,6 +76,26 @@ describe('AutoPlay / Reducer', () => {
       
       it('should return a new state with autoPlay being true', () =>
         expect(result).toEqual(expectedNewState));
+    });
+  });
+
+  describe('case: default', () => {
+    describe('when autoPlay is false', () => {
+      beforeAll(() => {
+        result = autoPlay(false, mockDefaultAction());
+      });
+
+      it('should not change the state', () =>
+        expect(result).toEqual(false));
+    });
+
+    describe('when autoPlay is true', () => {
+      beforeAll(() => {
+        result = autoPlay(true, mockDefaultAction());
+      });
+
+      it('should not change the state', () =>
+        expect(result).toEqual(true));
     });
   });
 });
