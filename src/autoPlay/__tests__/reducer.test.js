@@ -5,8 +5,6 @@ const mockSwitchAction = () => ({ type: SWITCH });
 const mockTurnOffAction = () => ({ type: TURN_OFF });
 const mockTurnOnAction = () => ({ type: TURN_ON });
 
-const initialState = false;
-
 describe('AutoPlay / Reducer', () => {
   let result, expectedNewState;
 
