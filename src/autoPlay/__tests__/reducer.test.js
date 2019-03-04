@@ -34,6 +34,7 @@ describe('AutoPlay / Reducer', () => {
     beforeAll(() => {
       expectedNewState = false;
     });
+
     describe('when autoPlay is false', () => {
       beforeAll(() => {
         result = autoPlay(false, mockTurnOffAction());
@@ -57,6 +58,7 @@ describe('AutoPlay / Reducer', () => {
     beforeAll(() => {
       expectedNewState = true;
     });
+
     describe('when autoPlay is false', () => {
       beforeAll(() => {
         result = autoPlay(false, mockTurnOnAction());
