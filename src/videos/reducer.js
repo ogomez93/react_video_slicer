@@ -110,7 +110,7 @@ const videos = (videos = initialState, { payload, type }) => {
       });
 
     default:
-      return { ...videos };
+      return videos;
   }
 };
 

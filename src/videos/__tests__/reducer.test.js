@@ -18,6 +18,8 @@ jest.mock('videos/utils', () => ({
   getClipsFromLocalStorage: jest.fn(() => null)
 }));
 
+const mockDefaultAction = () => ({ type: 'ANY_OTHER_ACTION' });
+
 const clip1 = {
   name: 'clip 1',
   tag: 'tag',
@@ -162,5 +164,15 @@ describe('Videos / Reducer', () => {
 
     it('should have set video loading to false', () =>
       expect(newState[videoIndex].loading).toEqual(false));
+  });
+
+  describe('case: default', () => {
+    beforeAll(() => {
+      state = [{}];
+      newState = videosReducer(state, mockDefaultAction());
+    });
+
+    it('should not change the state', () =>
+      expect(newState).toEqual(state));
   });
 });
