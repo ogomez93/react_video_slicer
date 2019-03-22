@@ -1,4 +1,4 @@
-const onFilterChange = setFilter =>
+export const onFilterChange = setFilter =>
   ({ target: { value = '' } }) => setFilter(value);
 
 export const onNameChange = ({ setName }) => onFilterChange(setName);
