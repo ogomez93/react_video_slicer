@@ -10,7 +10,7 @@ import withDisabledProp from './utils/withDisabledProp';
 import { withName, withTag } from './utils/withFilters';
 import { onNameChange, onTagChange } from './utils/handlers';
 import withDialogState from './utils/withDialogState';
-import { closeDialog, openDialog } from './utils/withDialogHandlers';
+import { closeDialog, openDialog } from './utils/dialogHandlers';
 
 const mapDispatchToProps = (dispatch, props) => ({
   onSubmit: event => {
